@@ -2,25 +2,52 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #111827; 
+  --primary-blue: #0046FF; /* 신한카드 블루 스타일 */
+  --secondary-bg: #F8F9FA;
+  --modern-gray: #D1D5DB;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary-blue: var(--primary-blue);
+  --color-secondary-bg: var(--secondary-bg);
+  --color-modern-gray: var(--modern-gray);
+  --font-sans: var(--font-scdream), "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* 부드러운 스크롤 적용 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 모던하고 선명한 타이포그래피 */
+h1, h2, h3, h4, h5, h6 {
+  color: #111827;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+/* 섹션 공통 여백 확대 (집중도 향상) */
+section {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+@media (min-width: 1024px) {
+  section {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
 }
