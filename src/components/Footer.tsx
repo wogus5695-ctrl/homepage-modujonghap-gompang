@@ -11,14 +11,13 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
           {/* 브랜드 정보 */}
           <div className="md:w-1/2">
-            <div className="flex items-center space-x-1 mb-6">
-              <span className="text-xl font-black text-blue-600">R</span>
-              <span className="text-xl font-black text-gray-900">레인가드</span>
+            <div className="flex items-center space-x-2 mb-6">
+              <span className="text-xl font-black text-blue-600">모두종합환경</span>
             </div>
             <p className="text-[15px] leading-relaxed max-w-md text-gray-600">
-              레인가드는 아파트 및 주거 시설의 빗물누수 문제를 완벽하게 해결하는 
-              창틀코킹 및 누수 보수 전문 브랜드입니다. 정밀 점검과 전문 실리콘 
-              코킹 공법으로 안전한 주거 환경을 약속합니다.
+              모두종합환경은 곰팡이제거, 단열시공, 탄성코트 전문 브랜드입니다. 
+              15년 경력의 노하우와 전문 장비를 통한 정밀 진단으로 
+              쾌적하고 건강한 주거 환경을 약속합니다.
             </p>
           </div>
 
@@ -40,14 +39,14 @@ const Footer = () => {
         <div className="pt-10 border-t border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
           <div className="space-y-2">
             <div className="text-[13px] text-gray-400">
-              대표: 김재헌 | 사업자등록번호: 405-15-02677
+              대표: 홍길동 | 사업자등록번호: 405-15-02677
             </div>
             <div className="text-[13px] text-gray-400">
-              * 서울·경기·인천·강원 지역 창틀코킹 및 빗물누수 보수 상담 가능
+              * 서울·경기·인천 지역 곰팡이제거 및 단열시공 상담 가능
             </div>
           </div>
           <p className="text-[13px] text-gray-300">
-            &copy; 2026 레인가드. All rights reserved.
+            &copy; 2026 모두종합환경. All rights reserved.
           </p>
         </div>
       </div>
