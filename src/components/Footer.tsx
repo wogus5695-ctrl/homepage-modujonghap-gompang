@@ -39,7 +39,7 @@ const Footer = () => {
         <div className="pt-10 border-t border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
           <div className="space-y-2">
             <div className="text-[13px] text-gray-400">
-              대표: 홍길동 | 사업자등록번호: 405-15-02677
+              대표: 김재현 | 사업자등록번호: 405-15-02677
             </div>
             <div className="text-[13px] text-gray-400">
               * 서울·경기·인천 지역 곰팡이제거 및 단열시공 상담 가능
