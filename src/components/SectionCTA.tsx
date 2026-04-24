@@ -31,7 +31,7 @@ const SectionCTA = () => {
               <span>전화로 즉시 견적 확인</span>
             </a>
             <a 
-              href="https://pf.kakao.com/_xxxx" 
+              href="http://pf.kakao.com/_xgjxmjX" 
               className="w-full sm:w-auto bg-[#FEE500] text-[#3c1e1e] px-10 py-5 rounded-2xl font-bold text-xl shadow-lg hover:scale-105 transition-all flex items-center justify-center space-x-3"
             >
               <MessageCircle size={24} fill="#3c1e1e" />

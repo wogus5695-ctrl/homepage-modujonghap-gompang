@@ -8,7 +8,7 @@ const FloatingCTA = () => {
     <div className="fixed bottom-8 right-8 z-[100] flex flex-col space-y-3">
       {/* 카카오톡 상담 플로팅 (작게) */}
       <a
-        href="https://pf.kakao.com/_xxxx"
+        href="http://pf.kakao.com/_xgjxmjX"
         target="_blank"
         rel="noopener noreferrer"
         className="w-12 h-12 bg-[#FEE500] text-[#3c1e1e] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform active:scale-95"

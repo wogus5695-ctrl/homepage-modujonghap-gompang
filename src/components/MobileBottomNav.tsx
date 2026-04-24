@@ -15,7 +15,7 @@ const MobileBottomNav = () => {
           <span className="font-bold">전화상담</span>
         </a>
         <a
-          href="https://pf.kakao.com/_xxxx"
+          href="http://pf.kakao.com/_xgjxmjX"
           target="_blank"
           rel="noopener noreferrer"
           className="flex-1 bg-[#FEE500] text-[#3c1e1e] rounded-xl flex items-center justify-center space-x-2 shadow-lg active:scale-95 transition-transform"

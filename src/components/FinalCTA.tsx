@@ -43,7 +43,7 @@ const FinalCTA = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
             </a>
             
             <a 
-              href="https://pf.kakao.com/_xxxx" 
+              href="http://pf.kakao.com/_xgjxmjX" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="w-full md:w-auto bg-[#FEE500] text-[#191919] px-10 py-5 rounded-2xl font-black text-lg hover:bg-[#FADA0A] transition-all transform hover:-translate-y-1 shadow-[0_15px_30px_-5px_rgba(254,229,0,0.2)] flex items-center justify-center space-x-3"
