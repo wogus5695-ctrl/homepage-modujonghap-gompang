@@ -16,7 +16,7 @@ const Footer = () => {
             </div>
             <p className="text-[15px] leading-relaxed max-w-md text-gray-600">
               모두종합환경은 곰팡이제거, 단열시공, 탄성코트 전문 브랜드입니다. 
-              15년 경력의 노하우와 전문 장비를 통한 정밀 진단으로 
+              노하우와 전문 장비를 통한 정밀 진단으로 
               쾌적하고 건강한 주거 환경을 약속합니다.
             </p>
           </div>
