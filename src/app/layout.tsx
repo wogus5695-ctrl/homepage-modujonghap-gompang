@@ -44,10 +44,10 @@ export const metadata: Metadata = {
   },
   other: {
     thumbnail: "/thumbnail.jpg",
+    "naver-site-verification": "a8f2ca6131ad3a5a057d24b322cd40e7d88b3d55",
   },
   verification: {
     google: "LaqP8Rikf3fH7ZiFLitcshG66QB2F7D0Tc9YrQDr_Ok",
-    naver: "a8f2ca6131ad3a5a057d24b322cd40e7d88b3d55",
   },
 };
 
