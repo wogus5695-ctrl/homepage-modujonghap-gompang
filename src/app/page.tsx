@@ -25,12 +25,26 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     return {
       title: "모두종합환경 | 곰팡이 해결·재발 방지·결로 진단 전문",
       description: "닦아도 다시 생기는 곰팡이, 원인부터 해결해야 합니다. 15년 경력의 정밀 진단과 전문 장비 시공으로 집의 가치와 가족의 건강을 지켜드립니다.",
+      openGraph: {
+        images: ["/thumbnail.jpg"],
+      },
     };
   }
 
   return {
     title: dynamic.metaTitle,
     description: dynamic.metaDesc,
+    openGraph: {
+      title: dynamic.metaTitle,
+      description: dynamic.metaDesc,
+      images: ["/thumbnail.jpg"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dynamic.metaTitle,
+      description: dynamic.metaDesc,
+      images: ["/thumbnail.jpg"],
+    },
   };
 }
 

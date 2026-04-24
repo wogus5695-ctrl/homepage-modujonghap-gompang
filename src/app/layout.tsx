@@ -23,12 +23,27 @@ export const metadata: Metadata = {
   description: "닦아도 다시 생기는 곰팡이, 원인부터 해결해야 합니다. 15년 경력의 정밀 진단과 전문 장비 시공으로 집의 가치와 가족의 건강을 지켜드립니다. 지금 바로 사진 상담 하세요.",
   keywords: ["곰팡이제거", "결로방지", "단열시공", "베란다곰팡이", "벽제곰팡이", "모두종합환경"],
   openGraph: {
-    title: "모두종합환경 | 곰팡이 제거 전문가",
-    description: "원인 진단 중심의 고품질 곰팡이 해결 솔루션",
-    url: "https://modu-mold.example.com",
+    title: "모두종합환경 | 곰팡이 해결·재발 방지·결로 진단 전문",
+    description: "닦아도 다시 생기는 곰팡이, 원인부터 해결해야 합니다. 15년 경력의 정밀 진단과 전문 장비 시공으로 집의 가치와 가족의 건강을 지켜드립니다.",
+    url: "https://modu-mold.com",
     siteName: "모두종합환경",
+    images: [
+      {
+        url: "/thumbnail.jpg",
+        width: 1200,
+        height: 630,
+        alt: "모두종합환경 대표 이미지",
+      },
+    ],
     locale: "ko_KR",
     type: "website",
+  },
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
+  other: {
+    thumbnail: "/thumbnail.jpg",
   },
 };
 
