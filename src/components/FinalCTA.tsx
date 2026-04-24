@@ -34,7 +34,7 @@ const FinalCTA = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
           {/* 3번 CTA: 하단 메인 버튼 */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
             <a 
-              href="tel:010-0000-0000" 
+              href="tel:010-4861-3226" 
               className="w-full md:w-auto bg-primary-blue text-white px-10 py-5 rounded-2xl font-black text-xl shadow-[0_20px_50px_-10px_rgba(0,70,255,0.4)] hover:bg-blue-700 transition-all transform hover:-translate-y-1 flex items-center justify-center space-x-3 group"
             >
               <Phone size={24} />

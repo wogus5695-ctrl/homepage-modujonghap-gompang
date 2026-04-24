@@ -19,7 +19,7 @@ const FloatingCTA = () => {
 
       {/* 전화 상담 플로팅 (메인) */}
       <a
-        href="tel:010-0000-0000"
+        href="tel:010-4861-3226"
         className="w-12 h-12 bg-primary-blue text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform active:scale-95 animate-bounce-slow"
         aria-label="전화 상담"
       >

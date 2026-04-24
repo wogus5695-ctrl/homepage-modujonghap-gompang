@@ -24,7 +24,7 @@ const SectionCTA = () => {
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a 
-              href="tel:010-0000-0000" 
+              href="tel:010-4861-3226" 
               className="w-full sm:w-auto bg-primary-light text-white px-10 py-5 rounded-2xl font-bold text-xl shadow-lg shadow-primary-light/20 hover:scale-105 transition-all flex items-center justify-center space-x-3"
             >
               <Phone size={24} />

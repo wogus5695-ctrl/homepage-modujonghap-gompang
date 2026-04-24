@@ -8,7 +8,7 @@ const MobileBottomNav = () => {
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-[60] bg-white border-t border-gray-100 shadow-[0_-10px_20px_rgba(0,0,0,0.1)] p-3">
       <div className="flex gap-3 h-14">
         <a
-          href="tel:010-0000-0000"
+          href="tel:010-4861-3226"
           className="flex-1 bg-primary-dark text-white rounded-xl flex items-center justify-center space-x-2 shadow-lg active:scale-95 transition-transform"
         >
           <Phone size={20} />

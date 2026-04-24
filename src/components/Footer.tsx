@@ -25,7 +25,7 @@ const Footer = () => {
               환경을 개선하는 데 모든 역량을 집중합니다.
             </p>
             <div className="flex space-x-4">
-              <a href="tel:010-0000-0000" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary-light hover:text-white transition-all">
+              <a href="tel:010-4861-3226" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary-light hover:text-white transition-all">
                 <Phone size={18} />
               </a>
               <a href="https://pf.kakao.com/_xxxx" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-[#FEE500] hover:text-[#3c1e1e] transition-all">
@@ -48,7 +48,7 @@ const Footer = () => {
             <div>
               <h4 className="text-white font-bold mb-4">고객 지원</h4>
               <ul className="space-y-2 text-sm">
-                <li>고객 센터: 010-0000-0000</li>
+                <li>고객 센터: 010-4861-3226</li>
                 <li>운영시간: 연중무휴</li>
                 <li>오전 09:00 - 오후 22:00</li>
                 <li>(야간 상담은 카톡 접수)</li>
