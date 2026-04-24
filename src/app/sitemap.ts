@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://modu-mold.com'
+  const baseUrl = 'https://modujonghap.co.kr'
   
   const regions = [
     "강서구", "염창동", "등촌동", "화곡본동", "화곡동", 

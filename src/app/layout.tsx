@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "모두종합환경 | 곰팡이 해결·재발 방지·결로 진단 전문",
     description: "닦아도 다시 생기는 곰팡이, 원인부터 해결해야 합니다. 15년 경력의 정밀 진단과 전문 장비 시공으로 집의 가치와 가족의 건강을 지켜드립니다.",
-    url: "https://modu-mold.com",
+    url: "https://modujonghap.co.kr",
     siteName: "모두종합환경",
     images: [
       {
@@ -44,6 +44,9 @@ export const metadata: Metadata = {
   },
   other: {
     thumbnail: "/thumbnail.jpg",
+  },
+  verification: {
+    google: "LaqP8Rikf3fH7ZiFLitcshG66QB2F7D0Tc9YrQDr_Ok",
   },
 };
 
