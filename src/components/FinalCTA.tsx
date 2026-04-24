@@ -38,7 +38,7 @@ const FinalCTA = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
               className="w-full md:w-auto bg-primary-blue text-white px-10 py-5 rounded-2xl font-black text-xl shadow-[0_20px_50px_-10px_rgba(0,70,255,0.4)] hover:bg-blue-700 transition-all transform hover:-translate-y-1 flex items-center justify-center space-x-3 group"
             >
               <Phone size={24} />
-              <span>{dynamic ? dynamic.ctaText : "무료 방문진단 신청"}</span>
+              <span>{dynamic ? dynamic.ctaText : "무료상담 전화하기"}</span>
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </a>
             

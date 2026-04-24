@@ -48,7 +48,7 @@ const Hero = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
               className="group flex items-center space-x-3 bg-primary-blue text-white px-8 py-4 rounded-xl text-base font-bold shadow-2xl shadow-primary-blue/30 hover:bg-blue-700 transition-all transform hover:-translate-y-1 w-fit"
             >
               <Phone size={20} />
-              <span>무료 상담 바로가기</span>
+              <span>무료상담 전화하기</span>
             </a>
           </div>
         </div>
