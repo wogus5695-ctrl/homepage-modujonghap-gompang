@@ -33,7 +33,7 @@ export const getDynamicContent = (k?: string | null): DynamicContent | null => {
       introText: `곰팡이는 결코 단순한 문제가 아닙니다. ${region} 지역의 기후와 환경을 이해하는 전문가가 원인을 분석하고 해결해야 다시 생기지 않습니다.`,
       expertText: `전문가가 ${region} 현장을 직접 방문하여 곰팡이의 원인을 분석하고, 근본적인 문제를 해결해야 다시는 곰팡이가 돌아오지 못합니다.`,
       ctaText: `무료상담 전화하기`,
-      metaTitle: `${region} 곰팡이제거 전문 | 모두종합환경 15년 경력 시공`,
+      metaTitle: `${region} 곰팡이제거 전문 | 모두종합환경 결로방지/탄성코트/단열시공`,
       metaDesc: `${region} 지역 곰팡이 고민, 닦아도 다시 생긴다면? 원인 진단부터 재발 방지 코팅까지 전문가가 확실하게 해결해드립니다.`,
     };
   } else if (service.includes("단열시공")) {
@@ -55,7 +55,7 @@ export const getDynamicContent = (k?: string | null): DynamicContent | null => {
       introText: `베란다 곰팡이 방지와 오염 방지에 탁월한 탄성코트 시공. ${region} 지역의 많은 아파트 현장 경험으로 프리미엄 마감을 제공합니다.`,
       expertText: `${region} 베란다 및 다용도실의 표면을 보호하고 오염을 방지하는 프리미엄 탄성코트 시공으로 집의 가치를 높여드립니다.`,
       ctaText: `무료상담 전화하기`,
-      metaTitle: `${region} 탄성코트 시공 전문 | 베란다 곰팡이 방지 및 리모델링`,
+      metaTitle: `${region} 탄성코트 시공 전문 | 곰팡이제거 시공 전문업체`,
       metaDesc: `${region} 탄성코트, 세라믹 코팅 시공. 곰팡이 방지는 물론 깔끔한 인테리어 효과까지! 15년 경력의 전문가가 직접 시공합니다.`,
     };
   } else {
