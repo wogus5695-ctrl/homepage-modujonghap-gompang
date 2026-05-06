@@ -64,7 +64,7 @@ export default async function Home({ searchParams }: Props) {
       <FAQ dynamic={dynamic} />
       <FinalCTA dynamic={dynamic} />
       
-      <Footer />
+      <Footer dynamic={dynamic} />
       <FloatingCTA />
     </main>
   );

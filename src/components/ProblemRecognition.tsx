@@ -31,7 +31,12 @@ const ProblemRecognition = ({ dynamic }: { dynamic?: DynamicContent | null }) =>
           
           <div className="space-y-8 text-lg md:text-xl text-gray-300 leading-relaxed font-medium text-center md:text-left">
             <p>
-              반복해서 생기는 곰팡이, 방치하면 손해만 커집니다.<br />
+              {dynamic ? (
+                <>반복해서 생기는 <span className="text-white font-bold">{dynamic.region} {dynamic.service}</span>, 방치하면 손해만 커집니다.</>
+              ) : (
+                <>반복해서 생기는 곰팡이, 방치하면 손해만 커집니다.</>
+              )}
+              <br />
               우리 가족의 피부와 호흡기, 부동산 시세, 미관 등
             </p>
             <p>

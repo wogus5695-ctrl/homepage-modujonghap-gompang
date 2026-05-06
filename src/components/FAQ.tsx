@@ -48,7 +48,7 @@ const FAQ = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
           <div className="w-20 h-1.5 bg-primary-light mx-auto mb-6 rounded-full"></div>
           <p className="text-gray-600 text-lg">
             {dynamic ? (
-              `${dynamic.region} ${dynamic.service} 문의하시기 전, 가장 많이 궁금해하시는 내용들을 정리했습니다.`
+              <><span className="text-orange-600 font-bold">{dynamic.region} {dynamic.service}</span> 문의하시기 전, 가장 많이 궁금해하시는 내용들을 정리했습니다.</>
             ) : (
               "문의하시기 전, 가장 많이 궁금해하시는 내용들을 정리했습니다."
             )}
