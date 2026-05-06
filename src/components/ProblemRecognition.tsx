@@ -25,37 +25,19 @@ const ProblemRecognition = ({ dynamic }: { dynamic?: DynamicContent | null }) =>
             Analysis & Risk
           </div>
           <h2 className="text-4xl md:text-6xl font-black !text-primary-blue mb-10 leading-tight tracking-tighter text-center md:text-left">
-            {dynamic ? (
-              <>
-                {dynamic.region} {dynamic.service} 고충,<br />
-                단순히 보기 흉한 게 아님을 아셔야 합니다.
-              </>
-            ) : (
-              <>
-                곰팡이, 단순히 보기에만<br />
-                흉한 것이 아닙니다.
-              </>
-            )}
+            곰팡이, 단순히 보기에만<br />
+            흉한 것이 아닙니다.
           </h2>
           
           <div className="space-y-8 text-lg md:text-xl text-gray-300 leading-relaxed font-medium text-center md:text-left">
             <p>
-              {dynamic ? (
-                <>반복해서 생기는 {dynamic.service}, 방치하면 손해만 커집니다.<br />가족의 건강과 소중한 공간을 위해 빠르게 해결해야 합니다.</>
-              ) : (
-                <>반복해서 생기는 곰팡이, 방치하면 손해만 커집니다.<br />우리 가족의 피부와 호흡기, 부동산 시세, 미관 등</>
-              )}
+              반복해서 생기는 곰팡이, 방치하면 손해만 커집니다.<br />
+              우리 가족의 피부와 호흡기, 부동산 시세, 미관 등
             </p>
             <p>
-              {dynamic ? (
-                dynamic.expertText
-              ) : (
-                <>
-                  시중에 판매하는 세제 겉면만 닦아내는 것은 임시방편 일 뿐,<br />
-                  <span className="text-white underline decoration-primary-blue decoration-2 underline-offset-8 font-bold">전문가가 원인을 분석하고, 근본적인 문제를 해결</span>해야<br />
-                  곰팡이는 다시 돌아오지 못합니다.
-                </>
-              )}
+              시중에 판매하는 세제 겉면만 닦아내는 것은 임시방편 일 뿐,<br />
+              <span className="text-white underline decoration-primary-blue decoration-2 underline-offset-8 font-bold">전문가가 원인을 분석하고, 근본적인 문제를 해결</span>해야<br />
+              곰팡이는 다시 돌아오지 못합니다.
             </p>
           </div>
 
