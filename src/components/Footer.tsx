@@ -15,7 +15,7 @@ const Footer = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
               <span className="text-xl font-black text-blue-600">모두종합환경</span>
             </div>
             <p className="text-[15px] leading-relaxed max-w-md text-gray-600">
-              모두종합환경은 {dynamic ? <><span className="text-blue-600 font-bold">{dynamic.region} {dynamic.service}</span>를 비롯한</> : "곰팡이제거,"} 단열시공, 탄성코트 전문 브랜드입니다. 
+              모두종합환경은 {dynamic ? <>{dynamic.region} {dynamic.service}를 비롯한</> : "곰팡이제거,"} 단열시공, 탄성코트 전문 브랜드입니다. 
               노하우와 전문 장비를 통한 정밀 진단으로 
               쾌적하고 건강한 주거 환경을 약속합니다.
             </p>
@@ -42,7 +42,7 @@ const Footer = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
               대표: 김재현 | 사업자등록번호: 405-15-02677
             </div>
             <div className="text-[13px] text-gray-400">
-              * {dynamic ? <><span className="text-blue-600 font-bold">{dynamic.region} {dynamic.service}</span> 및 수도권 전 지역 단열시공 상담 가능</> : "서울·경기·인천 지역 곰팡이제거 및 단열시공 상담 가능"}
+              * {dynamic ? <>{dynamic.region} {dynamic.service} 및 수도권 전 지역 단열시공 상담 가능</> : "서울·경기·인천 지역 곰팡이제거 및 단열시공 상담 가능"}
             </div>
           </div>
           <p className="text-[13px] text-gray-300">
