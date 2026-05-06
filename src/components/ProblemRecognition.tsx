@@ -52,7 +52,7 @@ const ProblemRecognition = ({ dynamic }: { dynamic?: DynamicContent | null }) =>
               <div className="text-white mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Biohazard size={56} strokeWidth={1.5} />
               </div>
-              <h3 className="text-white font-bold text-xl mb-3">건강 위협</h3>
+              <h3 className="!text-white font-bold text-xl mb-3">건강 위협</h3>
               <p className="text-gray-400 text-sm leading-relaxed text-center">포자균에 의한 비염, 천식, 아토피 유발</p>
             </div>
             
@@ -61,7 +61,7 @@ const ProblemRecognition = ({ dynamic }: { dynamic?: DynamicContent | null }) =>
               <div className="text-white mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Home size={56} strokeWidth={1.5} />
               </div>
-              <h3 className="text-white font-bold text-xl mb-3">자산 가치 하락</h3>
+              <h3 className="!text-white font-bold text-xl mb-3">자산 가치 하락</h3>
               <p className="text-gray-400 text-sm leading-relaxed text-center">건물 부식 및 매매/임대 시 감가 요인</p>
             </div>
 
@@ -70,7 +70,7 @@ const ProblemRecognition = ({ dynamic }: { dynamic?: DynamicContent | null }) =>
               <div className="text-white mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Eye size={56} strokeWidth={1.5} />
               </div>
-              <h3 className="text-white font-bold text-xl mb-3">미관 저해</h3>
+              <h3 className="!text-white font-bold text-xl mb-3">미관 저해</h3>
               <p className="text-gray-400 text-sm leading-relaxed text-center">미관을 해치는 시각적 불쾌함</p>
             </div>
           </div>
