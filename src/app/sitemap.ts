@@ -14,7 +14,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { name: "중랑구", dongs: ["면목동", "상봉동", "중화동", "묵동", "망우동", "신내동"] },
     { name: "도봉구", dongs: ["쌍문동", "방학동", "창동", "도봉동"] },
     { name: "성북구", dongs: ["성북동", "삼선동", "동소문동", "돈암동", "안암동", "보문동", "정릉동", "길음동", "종암동", "월곡동", "장위동", "석관동"] },
+    { name: "서대문구", dongs: ["충현동", "천연동", "북아현동", "신촌동", "연희동", "홍제동", "홍은동", "남가좌동", "북가좌동"] },
+    { name: "종로구", dongs: ["청운효자동", "사직동", "삼청동", "부암동", "평창동", "무악동", "교남동", "가회동", "이화동", "혜화동", "창신동", "숭인동"] },
+    { name: "동작구", dongs: ["노량진동", "상도동", "흑석동", "사당동", "대방동", "신대방동"] },
+    { name: "관악구", dongs: ["보라매동", "은천동", "성현동", "중앙동", "청림동", "행운동", "청룡동", "낙성대동", "인헌동", "남현동", "신림동", "신사동", "조원동", "미성동", "난곡동", "난향동", "서원동", "신원동", "서림동", "삼성동", "대학동"] },
+    { name: "금천구", dongs: ["가산동", "독산동", "시흥동"] },
+    { name: "구로구", dongs: ["신도림동", "구로동", "가리봉동", "고척동", "개봉동", "오류동", "항동", "수궁동"] },
+    { name: "서초구", dongs: ["서초동", "잠원동", "반포동", "방배동", "양재동", "내곡동"] },
+    { name: "강남구", dongs: ["신사동", "논현동", "압구정동", "청담동", "삼성동", "대치동", "역삼동", "도곡동", "개포동", "세곡동", "일원동", "수서동"] },
+    { name: "강북구", dongs: ["미아동", "번동", "수유동", "우이동", "삼양동", "송중동", "송천동", "삼각산동", "인수동"] },
+    { name: "동대문구", dongs: ["신설동", "용두동", "제기동", "전농동", "답십리동", "장안동", "청량리동", "회기동", "휘경동", "이문동"] },
+    { name: "성동구", dongs: ["왕십리동", "마장동", "사근동", "행당동", "응봉동", "금호동", "옥수동", "성수동", "송정동", "용답동"] },
+    { name: "광진구", dongs: ["중곡동", "능동", "구의동", "광장동", "자양동", "화양동", "군자동"] },
+    { name: "강동구", dongs: ["강일동", "상일동", "명일동", "고덕동", "암사동", "천호동", "성내동", "길동", "둔촌동"] },
+    { name: "송파구", dongs: ["풍납동", "거여동", "마천동", "방이동", "오륜동", "오금동", "송파동", "석촌동", "삼전동", "가락동", "문정동", "장지동", "위례동", "잠실동"] },
+    { name: "영등포구", dongs: ["영등포동", "여의동", "당산동", "도림동", "문래동", "양평동", "신길동", "대림동"] },
     { name: "중구", dongs: ["소공동", "회현동", "명동", "필동", "장충동", "광희동", "을지로동", "신당동", "다산동", "약수동", "청구동", "동화동", "황학동", "중림동"] },
+    { name: "고양시", dongs: ["주교동", "원신동", "흥도동", "성사동", "효자동", "삼송동", "창릉동", "능곡동", "화전동", "행신동", "화정동", "행주동", "대덕동", "식사동", "중산동", "정발산동", "풍산동", "백석동", "마두동", "장항동", "고봉동", "일산동", "탄현동", "주엽동", "대화동", "송포동", "송산동"] },
+    { name: "광명시", dongs: ["광명동", "철산동", "하안동", "소하동", "일직동", "학온동"] },
+    { name: "과천시", dongs: ["중앙동", "갈현동", "별양동", "부림동", "과천동", "문원동"] },
     { name: "김포시", dongs: ["사우동", "풍무동", "걸포동", "북변동", "운양동", "장기동", "마산동", "구래동", "고촌읍", "양촌읍", "통진읍"] },
     { name: "부평구", dongs: ["부평동", "산곡동", "청천동", "갈산동", "삼산동", "부개동", "일신동", "십정동"] },
     { name: "계양구", dongs: ["효성동", "계산동", "작전동", "서운동", "계양동"] },
@@ -23,13 +41,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const dynamicRoutes = areaData.flatMap((area) => {
     const baseName = area.name.length > 2 ? area.name.replace(/[구시]$/, "") : area.name;
-    const guRoutes = services.map(service => ({
-      url: `${baseUrl}/?k=${encodeURIComponent(`${baseName}-${service}`)}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    }));
     
+    // 1단계: 구/시 단위 키워드
+    const guRoutes = services.flatMap(service => {
+      const routes = [];
+      
+      // 풀네임 버전 (ex. 강북구-곰팡이제거)
+      if (area.name !== baseName) {
+        routes.push({
+          url: `${baseUrl}/?k=${encodeURIComponent(`${area.name}-${service}`)}`,
+          lastModified: new Date(),
+          changeFrequency: 'weekly' as const,
+          priority: 0.8,
+        });
+      }
+      
+      // 줄임말 버전 (ex. 강북-곰팡이제거)
+      routes.push({
+        url: `${baseUrl}/?k=${encodeURIComponent(`${baseName}-${service}`)}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      });
+      
+      return routes;
+    });
+    
+    // 2단계: 동 단위 키워드
     const dongRoutes = area.dongs.flatMap(dong => 
       services.map(service => ({
         url: `${baseUrl}/?k=${encodeURIComponent(`${dong}-${service}`)}`,
