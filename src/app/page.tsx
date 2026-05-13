@@ -21,30 +21,65 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const { k } = await searchParams;
   const dynamic = getDynamicContent(k);
 
+  const imageUrl = "https://modujonghap.co.kr/thumbnail.jpg";
+  const canonicalUrl = k 
+    ? `https://modujonghap.co.kr/?k=${encodeURIComponent(k)}` 
+    : "https://modujonghap.co.kr";
+
   if (!dynamic) {
     return {
-      title: "모두종합환경 | 곰팡이 해결·재발 방지·결로 진단 전문",
-      description: "닦아도 다시 생기는 곰팡이, 원인부터 해결해야 합니다. 15년 경력의 정밀 진단과 전문 장비 시공으로 집의 가치와 가족의 건강을 지켜드립니다.",
-      openGraph: {
-        images: ["/thumbnail.jpg"],
+      alternates: {
+        canonical: canonicalUrl,
       },
+      openGraph: {
+        images: [{
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: "모두종합환경 대표 이미지",
+        }],
+        url: canonicalUrl,
+        siteName: "모두종합환경",
+        locale: "ko_KR",
+        type: "website",
+      },
+      other: {
+        thumbnail: imageUrl,
+      }
     };
   }
 
   return {
     title: dynamic.metaTitle,
     description: dynamic.metaDesc,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: dynamic.metaTitle,
       description: dynamic.metaDesc,
-      images: ["/thumbnail.jpg"],
+      url: canonicalUrl,
+      siteName: "모두종합환경",
+      locale: "ko_KR",
+      type: "website",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${dynamic.region} ${dynamic.service} 전문 시공 - 모두종합환경`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: dynamic.metaTitle,
       description: dynamic.metaDesc,
-      images: ["/thumbnail.jpg"],
+      images: [imageUrl],
     },
+    other: {
+      thumbnail: imageUrl,
+    }
   };
 }
 

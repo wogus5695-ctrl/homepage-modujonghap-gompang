@@ -19,6 +19,7 @@ const scDream = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://modujonghap.co.kr'),
   title: "모두종합환경 | 곰팡이 해결·재발 방지·결로 진단 전문",
   description: "닦아도 다시 생기는 곰팡이, 원인부터 해결해야 합니다. 15년 경력의 정밀 진단과 전문 장비 시공으로 집의 가치와 가족의 건강을 지켜드립니다. 지금 바로 사진 상담 하세요.",
   keywords: ["곰팡이제거", "결로방지", "단열시공", "베란다곰팡이", "벽제곰팡이", "모두종합환경"],
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     siteName: "모두종합환경",
     images: [
       {
-        url: "/thumbnail.jpg",
+        url: "https://modujonghap.co.kr/thumbnail.jpg",
         width: 1200,
         height: 630,
         alt: "모두종합환경 대표 이미지",
@@ -38,12 +39,18 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "모두종합환경 | 곰팡이 해결·재발 방지·결로 진단 전문",
+    description: "닦아도 다시 생기는 곰팡이, 원인부터 해결해야 합니다. 15년 경력의 정밀 진단과 전문 장비 시공으로 집의 가치와 가족의 건강을 지켜드립니다.",
+    images: ["https://modujonghap.co.kr/thumbnail.jpg"],
+  },
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",
   },
   other: {
-    thumbnail: "/thumbnail.jpg",
+    thumbnail: "https://modujonghap.co.kr/thumbnail.jpg",
     "naver-site-verification": "a8f2ca6131ad3a5a057d24b322cd40e7d88b3d55",
   },
   verification: {
