@@ -13,13 +13,16 @@ const FinalCTA = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
           <div className="inline-block px-4 py-1.5 bg-primary-blue/10 border border-primary-blue/20 rounded-full text-primary-blue text-[10px] font-black uppercase tracking-[0.3em] mb-10">
             Get a Quote
           </div>
-          <h2 className="relative z-20 text-4xl md:text-6xl font-black !text-white mb-10 tracking-tighter leading-tight">
-            전문가의 진단이<br />
-            가장 빠른 해결책입니다.
+           <h2 className="relative z-20 text-4xl md:text-6xl font-black !text-white mb-10 tracking-tighter leading-tight">
+            {dynamic ? (
+              <>{dynamic.region} {dynamic.service} 시공,<br />전문가 진단이 가장 빠른 해결책입니다.</>
+            ) : (
+              <>전문가의 진단이<br />가장 빠른 해결책입니다.</>
+            )}
           </h2>
           <p className="text-lg md:text-xl text-gray-400 mb-16 font-medium leading-relaxed">
             더 이상 고민하지 마세요. 지금 상담을 신청하시면<br className="hidden md:block" />
-            전문가가 직접 방문하여 고객님 댁의 정확한 원인을 분석해 드립니다.
+            {dynamic ? `${dynamic.region} 지역 담당 ` : ""}전문가가 직접 방문하여 고객님 댁의 정확한 원인을 분석해 드립니다.
           </p>
           
           {/* 3번 CTA: 하단 메인 버튼 */}

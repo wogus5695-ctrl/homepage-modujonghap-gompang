@@ -2,6 +2,15 @@ import React from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "수도권 지역별 곰팡이제거·단열시공·탄성코트 서비스 안내",
+  description: "모두종합환경의 수도권(서울/경기/인천) 지역별 곰팡이제거, 결로방지 단열시공, 베란다 탄성코트 상세 서비스 안내 페이지 모음입니다.",
+  alternates: {
+    canonical: "https://modujonghap.co.kr/sitemap-seoul",
+  },
+};
 
 interface AreaConfig {
   name: string;

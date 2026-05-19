@@ -13,14 +13,24 @@ const Hero = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
           </div>
           
           <h1 className="text-5xl lg:text-7xl font-black text-gray-900 leading-[1.3] mb-8 tracking-tighter">
-            곰팡이, 지우면 끝?!<br />
+            {dynamic ? (
+              <span className="text-gray-900 block">{dynamic.h1}</span>
+            ) : (
+              "곰팡이, 지우면 끝?!"
+            )}
             <span className="text-primary-blue">원인</span>을 해결해야<br />
             진짜 <span className="text-primary-blue">[끝]</span> 입니다.
           </h1>
 
           <p className="text-lg lg:text-xl text-gray-500 mb-10 leading-relaxed font-medium max-w-2xl mx-auto lg:mx-0">
-            곰팡이는 결코 단순한 문제가 아닙니다.<br />
-            지우기만 하면 또 생기며 반복되는 경우가 많습니다.<br />
+            {dynamic ? (
+              <span className="text-gray-900 font-extrabold block mb-2">{dynamic.subtitle}</span>
+            ) : (
+              <>
+                곰팡이는 결코 단순한 문제가 아닙니다.<br />
+                지우기만 하면 또 생기며 반복되는 경우가 많습니다.<br />
+              </>
+            )}
             모두종합환경은 <span className="font-bold text-gray-900">[근본적인 원인 점검]</span>과 <span className="font-bold text-gray-900">[현장 맞춤 시공]</span>으로<br />
             <span className="underline decoration-primary-blue/30 underline-offset-4 decoration-2 text-gray-900">재발하지 않는 &apos;해결&apos;을 제공</span>해드립니다.
           </p>

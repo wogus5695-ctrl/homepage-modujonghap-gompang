@@ -50,11 +50,13 @@ export const metadata: Metadata = {
     apple: "/icon.png",
   },
   other: {
-    thumbnail: "https://modujonghap.co.kr/thumbnail.jpg",
-    "naver-site-verification": "a8f2ca6131ad3a5a057d24b322cd40e7d88b3d55",
+    thumbnail: "https://modujonghap.co.kr/thumbnail.jpg?v=1",
   },
   verification: {
     google: "LaqP8Rikf3fH7ZiFLitcshG66QB2F7D0Tc9YrQDr_Ok",
+    other: {
+      "naver-site-verification": "a8f2ca6131ad3a5a057d24b322cd40e7d88b3d55",
+    },
   },
 };
 
@@ -68,6 +70,44 @@ export default function RootLayout({
       lang="ko"
       className={`${scDream.variable} h-full antialiased`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "모두종합환경",
+              "url": "https://modujonghap.co.kr",
+              "logo": "https://modujonghap.co.kr/thumbnail.jpg?v=1",
+              "sameAs": [
+                "http://pf.kakao.com/_xgjxmjX"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "010-4861-3226",
+                "contactType": "customer service"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "모두종합환경",
+              "url": "https://modujonghap.co.kr",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://modujonghap.co.kr/?k={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   );

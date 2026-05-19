@@ -17,11 +17,23 @@ type Props = {
   searchParams: Promise<{ k?: string }>;
 };
 
+function getThumbnailUrl(k?: string | null): string {
+  if (!k) return "https://modujonghap.co.kr/thumbnail.jpg?v=1";
+  
+  // Deterministic hash based on query string k
+  let hash = 0;
+  for (let i = 0; i < k.length; i++) {
+    hash = k.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const imageIndex = (Math.abs(hash) % 3) + 1; // 1, 2, or 3
+  return `https://modujonghap.co.kr/thumbnail-${imageIndex}.jpg?v=1`;
+}
+
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
   const { k } = await searchParams;
   const dynamic = getDynamicContent(k);
 
-  const imageUrl = "https://modujonghap.co.kr/thumbnail.jpg";
+  const imageUrl = getThumbnailUrl(k);
   const canonicalUrl = k 
     ? `https://modujonghap.co.kr/?k=${encodeURIComponent(k)}` 
     : "https://modujonghap.co.kr";
