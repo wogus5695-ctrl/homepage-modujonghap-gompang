@@ -209,7 +209,7 @@ export default function SitemapSeoul() {
                         {/* 1-1. 풀네임 버전 (ex. 강북구-곰팡이제거) */}
                         {hasSuffix && (
                           <Link
-                            href={`/?k=${encodeURIComponent(`${area.name}-${service}`)}`}
+                            href={`/k/${encodeURIComponent(`${area.name}-${service}`)}`}
                             className="flex items-center justify-center px-4 py-5 bg-blue-50/50 border border-blue-200 rounded-lg text-[13px] font-black text-blue-800 hover:bg-primary-blue hover:text-white hover:border-primary-blue hover:shadow-md transition-all duration-200 text-center"
                           >
                             {area.name} {service}
@@ -218,7 +218,7 @@ export default function SitemapSeoul() {
                         
                         {/* 1-2. 줄임말 버전 (ex. 강북-곰팡이제거) */}
                         <Link
-                          href={`/?k=${encodeURIComponent(`${baseName}-${service}`)}`}
+                          href={`/k/${encodeURIComponent(`${baseName}-${service}`)}`}
                           className="flex items-center justify-center px-4 py-5 bg-blue-50/30 border border-blue-100 rounded-lg text-[13px] font-black text-blue-700 hover:bg-primary-blue hover:text-white hover:border-primary-blue hover:shadow-md transition-all duration-200 text-center"
                         >
                           {baseName} {service}
@@ -231,7 +231,7 @@ export default function SitemapSeoul() {
                       services.map((service) => (
                         <Link
                           key={`${dong}-${service}`}
-                          href={`/?k=${encodeURIComponent(`${dong}-${service}`)}`}
+                          href={`/k/${encodeURIComponent(`${dong}-${service}`)}`}
                           className="flex items-center justify-center px-4 py-5 bg-white border border-gray-100 rounded-lg text-[13px] font-bold text-gray-600 hover:border-primary-blue hover:text-primary-blue hover:shadow-md transition-all duration-200 text-center"
                         >
                           {dong} {service}

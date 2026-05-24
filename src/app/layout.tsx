@@ -101,7 +101,7 @@ export default function RootLayout({
               "url": "https://modujonghap.co.kr",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://modujonghap.co.kr/?k={search_term_string}",
+                "target": "https://modujonghap.co.kr/k/{search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })

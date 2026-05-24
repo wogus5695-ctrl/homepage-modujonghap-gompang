@@ -55,7 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // 풀네임 버전 (ex. 강북구-곰팡이제거)
       if (area.name !== baseName) {
         routes.push({
-          url: `${baseUrl}/?k=${encodeURIComponent(`${area.name}-${service}`)}`,
+          url: `${baseUrl}/k/${encodeURIComponent(`${area.name}-${service}`)}`,
           lastModified: new Date(),
           changeFrequency: 'weekly' as const,
           priority: 0.8,
@@ -64,7 +64,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       
       // 줄임말 버전 (ex. 강북-곰팡이제거)
       routes.push({
-        url: `${baseUrl}/?k=${encodeURIComponent(`${baseName}-${service}`)}`,
+        url: `${baseUrl}/k/${encodeURIComponent(`${baseName}-${service}`)}`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
         priority: 0.8,
@@ -76,7 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // 2단계: 동 단위 키워드
     const dongRoutes = area.dongs.flatMap(dong => 
       services.map(service => ({
-        url: `${baseUrl}/?k=${encodeURIComponent(`${dong}-${service}`)}`,
+        url: `${baseUrl}/k/${encodeURIComponent(`${dong}-${service}`)}`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
         priority: 0.6,

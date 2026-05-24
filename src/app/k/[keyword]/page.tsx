@@ -2,8 +2,6 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import TrustPoints from "@/components/TrustPoints";
 import ProblemRecognition from "@/components/ProblemRecognition";
-import ServiceIntro from "@/components/ServiceIntro";
-import TargetSpaces from "@/components/TargetSpaces";
 import Process from "@/components/Process";
 import Cases from "@/components/Cases";
 import FAQ from "@/components/FAQ";
@@ -12,11 +10,10 @@ import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 import { getDynamicContent } from "@/lib/dynamicHome";
 import { Metadata } from "next";
-import { permanentRedirect } from "next/navigation";
-
+import { notFound } from "next/navigation";
 
 type Props = {
-  searchParams: Promise<{ k?: string }>;
+  params: Promise<{ keyword: string }>;
 };
 
 function getThumbnailUrl(k?: string | null): string {
@@ -31,14 +28,13 @@ function getThumbnailUrl(k?: string | null): string {
   return `https://modujonghap.co.kr/thumbnail-${imageIndex}.jpg?v=2`;
 }
 
-export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
-  const { k } = await searchParams;
-  const dynamic = getDynamicContent(k);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { keyword } = await params;
+  const decodedKeyword = decodeURIComponent(keyword);
+  const dynamic = getDynamicContent(decodedKeyword);
 
-  const imageUrl = getThumbnailUrl(k);
-  const canonicalUrl = k 
-    ? `https://modujonghap.co.kr/?k=${encodeURIComponent(k)}` 
-    : "https://modujonghap.co.kr";
+  const imageUrl = getThumbnailUrl(decodedKeyword);
+  const canonicalUrl = `https://modujonghap.co.kr/k/${encodeURIComponent(decodedKeyword)}`;
 
   if (!dynamic) {
     return {
@@ -97,12 +93,15 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   };
 }
 
-export default async function Home({ searchParams }: Props) {
-  const { k } = await searchParams;
-  if (k) {
-    permanentRedirect(`/k/${encodeURIComponent(k)}`);
+export default async function DynamicKeywordHome({ params }: Props) {
+  const { keyword } = await params;
+  const decodedKeyword = decodeURIComponent(keyword);
+  const dynamic = getDynamicContent(decodedKeyword);
+
+  if (!dynamic) {
+    // If the keyword doesn't match a valid region and service, show 404
+    notFound();
   }
-  const dynamic = getDynamicContent(k);
 
   return (
     <main className="min-h-screen bg-white">
