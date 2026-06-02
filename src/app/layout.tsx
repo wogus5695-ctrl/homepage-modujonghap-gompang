@@ -31,8 +31,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://modujonghap.co.kr/thumbnail.jpg",
-        width: 1200,
-        height: 630,
+        width: 800,
+        height: 800,
         alt: "모두종합환경 대표 이미지",
       },
     ],
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     apple: "/icon.png",
   },
   other: {
-    thumbnail: "https://modujonghap.co.kr/thumbnail.jpg?v=2",
+    thumbnail: "https://modujonghap.co.kr/thumbnail.jpg",
   },
   verification: {
     google: "LaqP8Rikf3fH7ZiFLitcshG66QB2F7D0Tc9YrQDr_Ok",
@@ -79,7 +79,7 @@ export default function RootLayout({
               "@type": "Organization",
               "name": "모두종합환경",
               "url": "https://modujonghap.co.kr",
-              "logo": "https://modujonghap.co.kr/thumbnail.jpg?v=2",
+              "logo": "https://modujonghap.co.kr/thumbnail.jpg",
               "sameAs": [
                 "http://pf.kakao.com/_xgjxmjX"
               ],
