@@ -71,6 +71,8 @@ export default function RootLayout({
       className={`${scDream.variable} h-full antialiased`}
     >
       <head>
+        {/* 네이버 서치어드바이저 옛 방식 및 보조용 대표 이미지 지정 */}
+        <link rel="image_src" href="https://modujonghap.co.kr/thumbnail.jpg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -107,8 +109,37 @@ export default function RootLayout({
             })
           }}
         />
+        {/* 네이버 및 검색엔진용 WebPage 대표 이미지 구조화 데이터 */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "모두종합환경 | 곰팡이 해결·재발 방지·결로 진단 전문",
+              "description": "닦아도 다시 생기는 곰팡이, 원인부터 해결해야 합니다. 15년 경력의 정밀 진단과 전문 장비 시공으로 집의 가치와 가족의 건강을 지켜드립니다.",
+              "primaryImageOfPage": {
+                "@type": "ImageObject",
+                "url": "https://modujonghap.co.kr/thumbnail.jpg",
+                "width": "800",
+                "height": "800"
+              }
+            })
+          }}
+        />
       </head>
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        {/* 네이버 Yeti 검색 봇 수집용 최상단 대표 이미지 (본문 썸네일 매칭용) */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://modujonghap.co.kr/thumbnail.jpg"
+          alt="모두종합환경 대표 이미지"
+          width="1"
+          height="1"
+          style={{ position: 'absolute', width: '1px', height: '1px', opacity: 0, pointerEvents: 'none' }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

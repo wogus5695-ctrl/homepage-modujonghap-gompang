@@ -20,7 +20,7 @@ type Props = {
 };
 
 function getThumbnailUrl(k?: string | null): string {
-  if (!k) return "https://modujonghap.co.kr/thumbnail.jpg?v=2";
+  if (!k) return "https://modujonghap.co.kr/thumbnail.jpg";
   
   // Deterministic hash based on query string k
   let hash = 0;
@@ -28,7 +28,7 @@ function getThumbnailUrl(k?: string | null): string {
     hash = k.charCodeAt(i) + ((hash << 5) - hash);
   }
   const imageIndex = (Math.abs(hash) % 3) + 1; // 1, 2, or 3
-  return `https://modujonghap.co.kr/thumbnail-${imageIndex}.jpg?v=2`;
+  return `https://modujonghap.co.kr/thumbnail-${imageIndex}.jpg`;
 }
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
@@ -48,8 +48,8 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       openGraph: {
         images: [{
           url: imageUrl,
-          width: 1200,
-          height: 630,
+          width: 800,
+          height: 800,
           alt: "모두종합환경 대표 이미지",
         }],
         url: canonicalUrl,
@@ -79,8 +79,8 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
       images: [
         {
           url: imageUrl,
-          width: 1200,
-          height: 630,
+          width: 800,
+          height: 800,
           alt: `${dynamic.region} ${dynamic.service} 전문 시공 - 모두종합환경`,
         },
       ],
