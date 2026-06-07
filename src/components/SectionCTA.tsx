@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Phone, MessageCircle } from "lucide-react";
+import { Phone } from "lucide-react";
 
 const SectionCTA = () => {
   return (
@@ -24,18 +24,11 @@ const SectionCTA = () => {
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a 
-              href="tel:010-4667-5568" 
+              href="tel:050-7871-3550" 
               className="w-full sm:w-auto bg-primary-light text-white px-10 py-5 rounded-2xl font-bold text-xl shadow-lg shadow-primary-light/20 hover:scale-105 transition-all flex items-center justify-center space-x-3"
             >
               <Phone size={24} />
               <span>전화로 즉시 견적 확인</span>
-            </a>
-            <a 
-              href="http://pf.kakao.com/_xgjxmjX" 
-              className="w-full sm:w-auto bg-[#FEE500] text-[#3c1e1e] px-10 py-5 rounded-2xl font-bold text-xl shadow-lg hover:scale-105 transition-all flex items-center justify-center space-x-3"
-            >
-              <MessageCircle size={24} fill="#3c1e1e" />
-              <span>카톡으로 사진 상담</span>
             </a>
           </div>
           
