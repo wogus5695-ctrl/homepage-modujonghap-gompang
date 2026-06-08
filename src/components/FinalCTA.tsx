@@ -15,7 +15,7 @@ const FinalCTA = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
           </div>
            <h2 className="relative z-20 text-4xl md:text-6xl font-black !text-white mb-10 tracking-tighter leading-tight">
             {dynamic ? (
-              <>{dynamic.region} {dynamic.service},<br />전문가 진단이 가장 빠른 해결책입니다.</>
+              <>{dynamic.region} {dynamic.service} 관련 상담,<br />전문가 진단이 가장 빠른 해결책입니다.</>
             ) : (
               <>전문가의 진단이<br />가장 빠른 해결책입니다.</>
             )}
