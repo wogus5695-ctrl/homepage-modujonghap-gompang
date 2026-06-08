@@ -56,9 +56,9 @@ const FAQ = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
             let displayAnswer = faq.answer;
             if (dynamic) {
               if (index === 0) {
-                displayAnswer = displayAnswer.replace("곰팡이가 발생한", `${dynamic.region} ${dynamic.service}가 발생한`);
+                displayAnswer = displayAnswer.replace("곰팡이가 발생한", `${dynamic.region} ${dynamic.service} 상담이 필요한`);
               } else if (index === 2) {
-                displayAnswer = displayAnswer.replace("모두종합환경은 눈에 보이는 곰팡이만", `모두종합환경은 ${dynamic.region} ${dynamic.service}를 포함하여 눈에 보이는 곰팡이만`);
+                displayAnswer = displayAnswer.replace("모두종합환경은 눈에 보이는 곰팡이만", `모두종합환경은 ${dynamic.region} ${dynamic.service} 현장에서 눈에 보이는 곰팡이만`);
               }
             }
 
@@ -111,9 +111,9 @@ const FAQ = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
                 let displayAnswer = faq.answer;
                 if (dynamic) {
                   if (index === 0) {
-                    displayAnswer = displayAnswer.replace("곰팡이가 발생한", `${dynamic.region} ${dynamic.service}가 발생한`);
+                    displayAnswer = displayAnswer.replace("곰팡이가 발생한", `${dynamic.region} ${dynamic.service} 상담이 필요한`);
                   } else if (index === 2) {
-                    displayAnswer = displayAnswer.replace("모두종합환경은 눈에 보이는 곰팡이만", `모두종합환경은 ${dynamic.region} ${dynamic.service}를 포함하여 눈에 보이는 곰팡이만`);
+                    displayAnswer = displayAnswer.replace("모두종합환경은 눈에 보이는 곰팡이만", `모두종합환경은 ${dynamic.region} ${dynamic.service} 현장에서 눈에 보이는 곰팡이만`);
                   }
                 }
                 return {

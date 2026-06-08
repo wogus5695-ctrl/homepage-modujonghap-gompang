@@ -32,7 +32,7 @@ const ProblemRecognition = ({ dynamic }: { dynamic?: DynamicContent | null }) =>
           <div className="space-y-8 text-lg md:text-xl text-gray-300 leading-relaxed font-medium text-center md:text-left">
             <p>
               {dynamic ? (
-                <>반복해서 생기는 <span>{dynamic.region} {dynamic.service}</span>, 방치하면 손해만 커집니다.</>
+                <>반복해서 발생하는 <span>{dynamic.region} {dynamic.service}</span> 관련 문제, 방치하면 손해만 커집니다.</>
               ) : (
                 <>반복해서 생기는 곰팡이, 방치하면 손해만 커집니다.</>
               )}

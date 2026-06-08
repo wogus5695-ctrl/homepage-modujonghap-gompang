@@ -13,11 +13,12 @@ export interface DynamicContent {
 export const getDynamicContent = (k?: string | null): DynamicContent | null => {
   if (!k) return null;
 
-  const parts = k.split("-");
+  const decoded = decodeURIComponent(k);
+  const parts = decoded.split("-");
   if (parts.length < 2) return null;
 
   const region = parts[0];
-  const service = parts[1];
+  const service = parts.slice(1).join("-");
 
   let content: Partial<DynamicContent> = {
     region,
@@ -58,8 +59,30 @@ export const getDynamicContent = (k?: string | null): DynamicContent | null => {
       metaTitle: `${region} 탄성코트 시공 전문 | 곰팡이제거 시공 전문업체`,
       metaDesc: `${region} 탄성코트, 세라믹 코팅 시공. 곰팡이 방지는 물론 깔끔한 인테리어 효과까지! 15년 경력의 전문가가 직접 시공합니다.`,
     };
+  } else if (service.includes("결로방지") || service.includes("페인트")) {
+    content = {
+      ...content,
+      h1: `${region} 결로방지 페인트`,
+      subtitle: `${region} 결로와 습기 원인을 제거하는 친환경 특수 코팅`,
+      introText: `겨울철 결로 현상과 이로 인한 곰팡이 발생은 전용 결로방지 페인트 시공이 효과적입니다. ${region} 지역의 현장 상태에 맞춘 친환경 특수 도장으로 쾌적함을 지켜드립니다.`,
+      expertText: `${region} 현장 표면의 습기를 완벽히 제거한 후 결로방지 기능성 페인트를 꼼꼼히 도포하여 결로와 곰팡이 문제를 한 번에 해결합니다.`,
+      ctaText: `무료상담 전화하기`,
+      metaTitle: `${region} 결로방지 페인트 시공 | 친환경 곰팡이 방지 페인트 전문`,
+      metaDesc: `${region} 베란다, 다용도실 결로방지 페인트 시공. 결로 차단과 친환경 방지 페인트 도포로 곰팡이 발생을 차단합니다.`,
+    };
   } else {
-    return null;
+    // 기타 키워드 대응
+    const displayService = service === "기타" ? "현장 시공" : service;
+    content = {
+      ...content,
+      h1: `${region} ${displayService}`,
+      subtitle: `${region} 현장 맞춤형 정밀 진단 및 전문 시공`,
+      introText: `${region} 지역의 곰팡이 및 결로 관련 문제, 현장 상태를 정확하게 분석하여 공간 맞춤형 최적의 시공 솔루션을 제공해드립니다.`,
+      expertText: `${region} 현장의 세부적인 원인을 파악한 후, 재발이 없도록 근본적인 보완 조치와 정밀 시공을 책임지고 진행합니다.`,
+      ctaText: `무료상담 전화하기`,
+      metaTitle: `${region} ${displayService} 전문 | 모두종합환경 곰팡이/단열/탄성`,
+      metaDesc: `${region} ${displayService} 상담. 원인 파악이 어려운 곰팡이와 결로 문제, 전문가의 정밀 진단 and 전문 시공으로 깨끗하게 해결하세요.`,
+    };
   }
 
   return content as DynamicContent;
