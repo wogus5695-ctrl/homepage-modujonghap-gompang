@@ -19,18 +19,18 @@ const scDream = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://modujonghap.co.kr'),
+  metadataBase: new URL('https://www.modujonghap.co.kr'),
   title: "모두종합환경 | 곰팡이 해결·재발 방지·결로 진단 전문",
   description: "닦아도 다시 생기는 곰팡이, 원인부터 해결해야 합니다. 15년 경력의 정밀 진단과 전문 장비 시공으로 집의 가치와 가족의 건강을 지켜드립니다. 지금 바로 사진 상담 하세요.",
   keywords: ["곰팡이제거", "결로방지", "단열시공", "베란다곰팡이", "벽제곰팡이", "모두종합환경"],
   openGraph: {
     title: "모두종합환경 | 곰팡이 해결·재발 방지·결로 진단 전문",
     description: "닦아도 다시 생기는 곰팡이, 원인부터 해결해야 합니다. 15년 경력의 정밀 진단과 전문 장비 시공으로 집의 가치와 가족의 건강을 지켜드립니다.",
-    url: "https://modujonghap.co.kr",
+    url: "https://www.modujonghap.co.kr",
     siteName: "모두종합환경",
     images: [
       {
-        url: "https://modujonghap.co.kr/thumbnail.jpg",
+        url: "https://www.modujonghap.co.kr/thumbnail.jpg",
         width: 800,
         height: 800,
         alt: "모두종합환경 대표 이미지",
@@ -43,14 +43,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "모두종합환경 | 곰팡이 해결·재발 방지·결로 진단 전문",
     description: "닦아도 다시 생기는 곰팡이, 원인부터 해결해야 합니다. 15년 경력의 정밀 진단과 전문 장비 시공으로 집의 가치와 가족의 건강을 지켜드립니다.",
-    images: ["https://modujonghap.co.kr/thumbnail.jpg"],
+    images: ["https://www.modujonghap.co.kr/thumbnail.jpg"],
   },
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",
   },
   other: {
-    thumbnail: "https://modujonghap.co.kr/thumbnail.jpg",
+    thumbnail: "https://www.modujonghap.co.kr/thumbnail.jpg",
   },
   verification: {
     google: "LaqP8Rikf3fH7ZiFLitcshG66QB2F7D0Tc9YrQDr_Ok",
@@ -71,8 +71,10 @@ export default function RootLayout({
       className={`${scDream.variable} h-full antialiased`}
     >
       <head>
-        {/* 네이버 서치어드바이저 옛 방식 및 보조용 대표 이미지 지정 */}
-        <link rel="image_src" href="https://modujonghap.co.kr/thumbnail.jpg" />
+        {/* 네이버 서치어드바이저 및 검색엔진용 명시적 썸네일/대표 이미지 지정 */}
+        <meta name="thumbnail" content="https://www.modujonghap.co.kr/thumbnail.jpg" />
+        <meta property="og:image" content="https://www.modujonghap.co.kr/thumbnail.jpg" />
+        <link rel="image_src" href="https://www.modujonghap.co.kr/thumbnail.jpg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -80,8 +82,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "모두종합환경",
-              "url": "https://modujonghap.co.kr",
-              "logo": "https://modujonghap.co.kr/thumbnail.jpg",
+              "url": "https://www.modujonghap.co.kr",
+              "logo": "https://www.modujonghap.co.kr/thumbnail.jpg",
               "sameAs": [
                 "http://pf.kakao.com/_xgjxmjX"
               ],
@@ -100,10 +102,10 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "모두종합환경",
-              "url": "https://modujonghap.co.kr",
+              "url": "https://www.modujonghap.co.kr",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://modujonghap.co.kr/k/{search_term_string}",
+                "target": "https://www.modujonghap.co.kr/k/{search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })
@@ -120,7 +122,7 @@ export default function RootLayout({
               "description": "닦아도 다시 생기는 곰팡이, 원인부터 해결해야 합니다. 15년 경력의 정밀 진단과 전문 장비 시공으로 집의 가치와 가족의 건강을 지켜드립니다.",
               "primaryImageOfPage": {
                 "@type": "ImageObject",
-                "url": "https://modujonghap.co.kr/thumbnail.jpg",
+                "url": "https://www.modujonghap.co.kr/thumbnail.jpg",
                 "width": "800",
                 "height": "800"
               }
@@ -132,7 +134,7 @@ export default function RootLayout({
         {/* 네이버 Yeti 검색 봇 수집용 최상단 대표 이미지 (본문 썸네일 매칭용) */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="https://modujonghap.co.kr/thumbnail.jpg"
+          src="https://www.modujonghap.co.kr/thumbnail.jpg"
           alt="모두종합환경 대표 이미지"
           width="1"
           height="1"

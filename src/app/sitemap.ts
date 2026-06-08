@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://modujonghap.co.kr'
+  const baseUrl = 'https://www.modujonghap.co.kr'
   
   const services = ["곰팡이제거", "단열시공", "탄성코트"]
   const areaData = [

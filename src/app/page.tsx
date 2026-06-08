@@ -20,7 +20,7 @@ type Props = {
 };
 
 function getThumbnailUrl(k?: string | null): string {
-  if (!k) return "https://modujonghap.co.kr/thumbnail.jpg";
+  if (!k) return "https://www.modujonghap.co.kr/thumbnail.jpg";
   
   // Deterministic hash based on query string k
   let hash = 0;
@@ -28,7 +28,7 @@ function getThumbnailUrl(k?: string | null): string {
     hash = k.charCodeAt(i) + ((hash << 5) - hash);
   }
   const imageIndex = (Math.abs(hash) % 3) + 1; // 1, 2, or 3
-  return `https://modujonghap.co.kr/thumbnail-${imageIndex}.jpg`;
+  return `https://www.modujonghap.co.kr/thumbnail-${imageIndex}.jpg`;
 }
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
@@ -37,8 +37,8 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 
   const imageUrl = getThumbnailUrl(k);
   const canonicalUrl = k 
-    ? `https://modujonghap.co.kr/?k=${encodeURIComponent(k)}` 
-    : "https://modujonghap.co.kr";
+    ? `https://www.modujonghap.co.kr/?k=${encodeURIComponent(k)}` 
+    : "https://www.modujonghap.co.kr";
 
   if (!dynamic) {
     return {

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://modujonghap.co.kr/sitemap.xml',
+    sitemap: 'https://www.modujonghap.co.kr/sitemap.xml',
   }
 }

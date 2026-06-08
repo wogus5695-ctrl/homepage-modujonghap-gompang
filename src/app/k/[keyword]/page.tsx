@@ -17,7 +17,7 @@ type Props = {
 };
 
 function getThumbnailUrl(): string {
-  return "https://modujonghap.co.kr/thumbnail.jpg";
+  return "https://www.modujonghap.co.kr/thumbnail.jpg";
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const dynamic = getDynamicContent(decodedKeyword);
 
   const imageUrl = getThumbnailUrl();
-  const canonicalUrl = `https://modujonghap.co.kr/k/${encodeURIComponent(decodedKeyword)}`;
+  const canonicalUrl = `https://www.modujonghap.co.kr/k/${encodeURIComponent(decodedKeyword)}`;
 
   if (!dynamic) {
     return {
