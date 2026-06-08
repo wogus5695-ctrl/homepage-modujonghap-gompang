@@ -111,7 +111,7 @@ export default async function Home({ searchParams }: Props) {
       <Hero dynamic={dynamic} />
       <TrustPoints />
       <ProblemRecognition dynamic={dynamic} />
-      <Process />
+      <Process dynamic={dynamic} />
       <Cases />
       <FAQ dynamic={dynamic} />
       <FinalCTA dynamic={dynamic} />

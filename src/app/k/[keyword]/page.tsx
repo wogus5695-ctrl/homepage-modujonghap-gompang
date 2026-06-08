@@ -102,7 +102,7 @@ export default async function DynamicKeywordHome({ params }: Props) {
       <Hero dynamic={dynamic} />
       <TrustPoints />
       <ProblemRecognition dynamic={dynamic} />
-      <Process />
+      <Process dynamic={dynamic} />
       <Cases />
       <FAQ dynamic={dynamic} />
       <FinalCTA dynamic={dynamic} />
