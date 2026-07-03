@@ -181,7 +181,7 @@ const TrustPoints = () => {
           {/* 모바일 하단 CTA */}
           <div className="pt-4">
             <a
-              href="tel:050-7871-3550"
+              href="tel:010-8309-9249"
               className="w-full h-12 flex items-center justify-center space-x-2 bg-primary-blue text-white rounded-xl font-bold text-[15px] shadow-lg shadow-primary-blue/20 hover:bg-blue-700 transition-colors"
             >
               <Phone size={18} />

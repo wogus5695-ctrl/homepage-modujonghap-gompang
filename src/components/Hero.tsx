@@ -84,7 +84,7 @@ const Hero = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
           {/* CTA 버튼 */}
           <div className="flex justify-center lg:justify-start mb-4 lg:mb-0">
             <a
-              href="tel:050-7871-3550"
+              href="tel:010-8309-9249"
               className="group flex items-center space-x-3 bg-primary-blue text-white px-8 py-4 rounded-xl text-base font-bold shadow-2xl shadow-primary-blue/30 hover:bg-blue-700 transition-all transform hover:-translate-y-1 w-full sm:w-fit justify-center"
             >
               <Phone size={20} />

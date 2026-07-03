@@ -23,10 +23,10 @@ const Footer = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
           <div className="md:text-right">
             <h4 className="text-gray-900 font-bold mb-4">고객센터</h4>
             <a 
-              href="tel:050-7871-3550" 
+              href="tel:010-8309-9249" 
               className="text-3xl md:text-4xl font-black text-blue-600 block mb-2"
             >
-              050-7871-3550
+              010-8309-9249
             </a>
             <p className="text-sm font-medium text-gray-400">
               평일/주말 09:00 ~ 20:00 (연중무휴)
