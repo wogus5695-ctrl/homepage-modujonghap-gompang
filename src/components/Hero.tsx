@@ -8,6 +8,31 @@ import { DEFAULT_OPERATOR } from "@/lib/operatorConfig";
 const Hero = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
   const operator = dynamic?.operator || DEFAULT_OPERATOR;
 
+  const getHeroImage = () => {
+    if (!dynamic) return "/images/hero-main.jpg";
+    if (dynamic.service.includes("줄눈시공") || dynamic.service.includes("줄눈")) {
+      return "/images/hero-grout.jpg";
+    }
+    if (dynamic.service.includes("탄성코트")) {
+      return "/images/hero-elastic.jpg";
+    }
+    if (dynamic.templateType === "finish") {
+      return "/images/hero-elastic.jpg";
+    }
+    return "/images/hero-main.jpg";
+  };
+
+  const getHeroAlt = () => {
+    if (!dynamic) return "곰팡이 시공 현장 메인 사진";
+    if (dynamic.service.includes("줄눈시공") || dynamic.service.includes("줄눈")) {
+      return "욕실 타일 줄눈시공 완료 사진";
+    }
+    if (dynamic.service.includes("탄성코트")) {
+      return "베란다 탄성코트 시공 완료 사진";
+    }
+    return `${dynamic.service} 시공 완료 사진`;
+  };
+
   return (
     <section className="relative lg:min-h-[90vh] min-h-0 flex items-center bg-white pt-24 pb-12 lg:pt-20 lg:pb-20 overflow-hidden">
       <div className="container mx-auto px-4 grid lg:grid-cols-2 items-center gap-8 lg:gap-16">
@@ -122,8 +147,8 @@ const Hero = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
         <div className="relative z-10 p-4 lg:p-0 max-w-md mx-auto lg:max-w-none w-full">
           <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,70,255,0.15)] border-8 border-gray-50">
             <Image
-              src={dynamic?.templateType === "finish" ? "/images/hero-finish.jpg" : "/images/hero-main.jpg"}
-              alt={dynamic?.templateType === "finish" ? "탄성코트 줄눈시공 완료 사진" : "곰팡이 시공 현장 메인 사진"}
+              src={getHeroImage()}
+              alt={getHeroAlt()}
               fill
               className="object-cover"
               priority

@@ -16,7 +16,14 @@ type Props = {
   params: Promise<{ keyword: string }>;
 };
 
-function getThumbnailUrl(): string {
+function getThumbnailUrl(keyword: string): string {
+  const decoded = decodeURIComponent(keyword);
+  if (decoded.includes("줄눈시공") || decoded.includes("줄눈")) {
+    return "https://www.modujonghap.co.kr/images/hero-grout.jpg";
+  }
+  if (decoded.includes("탄성코트")) {
+    return "https://www.modujonghap.co.kr/images/hero-elastic.jpg";
+  }
   return "https://www.modujonghap.co.kr/thumbnail.jpg";
 }
 
@@ -25,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const decodedKeyword = decodeURIComponent(keyword);
   const dynamic = getDynamicContent(decodedKeyword);
 
-  const imageUrl = getThumbnailUrl();
+  const imageUrl = getThumbnailUrl(keyword);
   const canonicalUrl = `https://www.modujonghap.co.kr/k/${encodeURIComponent(decodedKeyword)}`;
 
   if (!dynamic) {

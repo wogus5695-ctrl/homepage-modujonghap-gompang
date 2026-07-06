@@ -22,6 +22,14 @@ type Props = {
 function getThumbnailUrl(k?: string | null): string {
   if (!k) return "https://www.modujonghap.co.kr/thumbnail.jpg";
   
+  const decoded = decodeURIComponent(k);
+  if (decoded.includes("줄눈시공") || decoded.includes("줄눈")) {
+    return "https://www.modujonghap.co.kr/images/hero-grout.jpg";
+  }
+  if (decoded.includes("탄성코트")) {
+    return "https://www.modujonghap.co.kr/images/hero-elastic.jpg";
+  }
+  
   // Deterministic hash based on query string k
   let hash = 0;
   for (let i = 0; i < k.length; i++) {

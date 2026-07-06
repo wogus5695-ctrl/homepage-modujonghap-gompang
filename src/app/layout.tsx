@@ -71,10 +71,6 @@ export default function RootLayout({
       className={`${scDream.variable} h-full antialiased`}
     >
       <head>
-        {/* 네이버 서치어드바이저 및 검색엔진용 명시적 썸네일/대표 이미지 지정 */}
-        <meta name="thumbnail" content="https://www.modujonghap.co.kr/thumbnail.jpg" />
-        <meta property="og:image" content="https://www.modujonghap.co.kr/thumbnail.jpg" />
-        <link rel="image_src" href="https://www.modujonghap.co.kr/thumbnail.jpg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
