@@ -3,9 +3,11 @@
 import React from "react";
 import { Phone, ArrowRight } from "lucide-react";
 import { DynamicContent } from "@/lib/dynamicHome";
+import { DEFAULT_OPERATOR } from "@/lib/operatorConfig";
 
 const FinalCTA = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
   const isFinish = dynamic?.templateType === "finish";
+  const operator = dynamic?.operator || DEFAULT_OPERATOR;
 
   return (
     <section id="contact" className="py-32 bg-gray-950 relative overflow-hidden">
@@ -43,7 +45,7 @@ const FinalCTA = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
           {/* 3번 CTA: 하단 메인 버튼 */}
           <div className="flex flex-col md:flex-row items-center justify-center gap-6">
             <a 
-              href="tel:010-8309-9249" 
+              href={`tel:${operator.contactPhone}`} 
               className="w-full md:w-auto bg-primary-blue text-white px-10 py-5 rounded-2xl font-black text-xl shadow-[0_20px_50px_-10px_rgba(0,70,255,0.4)] hover:bg-blue-700 transition-all transform hover:-translate-y-1 flex items-center justify-center space-x-3 group"
             >
               <Phone size={24} />

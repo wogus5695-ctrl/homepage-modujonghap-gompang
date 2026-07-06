@@ -3,9 +3,11 @@
 import React from "react";
 import Link from "next/link";
 import { DynamicContent } from "@/lib/dynamicHome";
+import { DEFAULT_OPERATOR } from "@/lib/operatorConfig";
 
 const Footer = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
   const isFinish = dynamic?.templateType === "finish";
+  const operator = dynamic?.operator || DEFAULT_OPERATOR;
 
   return (
     <footer className="bg-white text-gray-500 py-16 border-t border-gray-100">
@@ -33,13 +35,13 @@ const Footer = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
           <div className="md:text-right">
             <h4 className="text-gray-900 font-bold mb-4">고객센터</h4>
             <a 
-              href="tel:010-8309-9249" 
+              href={`tel:${operator.contactPhone}`} 
               className="text-3xl md:text-4xl font-black text-blue-600 block mb-2"
             >
-              010-8309-9249
+              {operator.contactPhone}
             </a>
             <p className="text-sm font-medium text-gray-400">
-              평일/주말 09:00 ~ 20:00 (연중무휴)
+              {operator.operatingHours}
             </p>
           </div>
         </div>
@@ -47,7 +49,7 @@ const Footer = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
         <div className="pt-10 border-t border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
           <div className="space-y-2">
             <div className="text-[13px] text-gray-400">
-              대표: 김재현 | 사업자등록번호: 405-15-02677
+              대표: {operator.representative} | 사업자등록번호: {operator.businessNumber}
             </div>
             <div className="text-[13px] text-gray-400">
               * {dynamic ? (
@@ -58,7 +60,7 @@ const Footer = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
             </div>
           </div>
           <p className="text-[13px] text-gray-300">
-            &copy; 2026 모두종합환경. All rights reserved.
+            &copy; 2026 {operator.operatorName}. All rights reserved.
           </p>
         </div>
       </div>
