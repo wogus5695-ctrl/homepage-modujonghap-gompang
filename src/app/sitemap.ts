@@ -3,7 +3,10 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.modujonghap.co.kr'
   
-  const services = ["곰팡이제거", "단열시공", "탄성코트"]
+  const moldServices = ["곰팡이제거", "단열시공", "결로방지"]
+  const finishServices = ["탄성코트", "줄눈시공"]
+  const allServices = [...moldServices, ...finishServices]
+
   const areaData = [
     { name: "강서구", dongs: ["염창동", "등촌동", "화곡본동", "화곡동", "우장산동", "가양동", "발산동", "공항동", "방화동"] },
     { name: "마포구", dongs: ["공덕동", "아현동", "도화동", "용강동", "대흥동", "염리동", "신수동", "서강동", "서교동", "합정동", "망원동", "연남동", "성산동", "상암동"] },
@@ -49,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const baseName = area.name.length > 2 ? area.name.replace(/[구시]$/, "") : area.name;
     
     // 1단계: 구/시 단위 키워드
-    const guRoutes = services.flatMap(service => {
+    const guRoutes = allServices.flatMap(service => {
       const routes = [];
       
       // 풀네임 버전 (ex. 강북구-곰팡이제거)
@@ -75,7 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     
     // 2단계: 동 단위 키워드
     const dongRoutes = area.dongs.flatMap(dong => 
-      services.map(service => ({
+      allServices.map(service => ({
         url: `${baseUrl}/k/${encodeURIComponent(`${dong}-${service}`)}`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
@@ -95,6 +98,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/sitemap-seoul`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/sitemap-seoul-finish`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.5,

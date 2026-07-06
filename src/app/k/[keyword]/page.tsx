@@ -100,15 +100,15 @@ export default async function DynamicKeywordHome({ params }: Props) {
       <Header />
       
       <Hero dynamic={dynamic} />
-      <TrustPoints />
+      <TrustPoints dynamic={dynamic} />
       <ProblemRecognition dynamic={dynamic} />
       <Process dynamic={dynamic} />
-      <Cases />
+      <Cases dynamic={dynamic} />
       <FAQ dynamic={dynamic} />
       <FinalCTA dynamic={dynamic} />
       
       <Footer dynamic={dynamic} />
-      <FloatingCTA />
+      <FloatingCTA dynamic={dynamic} />
     </main>
   );
 }

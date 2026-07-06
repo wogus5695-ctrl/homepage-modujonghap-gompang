@@ -2,12 +2,16 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Search, ShieldCheck, Wrench, ClipboardCheck, ChevronDown, Phone } from "lucide-react";
+import { Search, ShieldCheck, Wrench, ClipboardCheck, ChevronDown, Phone, Sparkles, Layers } from "lucide-react";
+import { DynamicContent } from "@/lib/dynamicHome";
+import { DEFAULT_OPERATOR } from "@/lib/operatorConfig";
 
-const TrustPoints = () => {
+const TrustPoints = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const isFinish = dynamic?.templateType === "finish";
+  const operator = dynamic?.operator || DEFAULT_OPERATOR;
 
-  const points = [
+  const moldPoints = [
     {
       image: "/images/trust/trust-1.jpg",
       icon: <Search size={20} />,
@@ -36,13 +40,53 @@ const TrustPoints = () => {
     },
   ];
 
+  const finishPoints = [
+    {
+      image: "/images/trust/trust-1.jpg",
+      icon: <Wrench size={20} />,
+      title: "정밀한 밑작업",
+      description: "오래 가는 시공의 비결은 기초입니다. 페인트 부식층 탈거 및 타일 틈새 깊이 확보 등 기초 공정을 최우선으로 합니다.",
+    },
+    {
+      image: "/images/trust/trust-2.jpg",
+      icon: <Sparkles size={20} />,
+      title: "친환경 프리미엄 자재",
+      description: "냄새와 유해물질이 없는 최고급 친수성 세라믹 도료와 내오염성이 보장된 정품 친환경 줄눈재만 사용합니다.",
+      position: "object-top",
+    },
+    {
+      image: "/images/trust/trust-3.jpg",
+      icon: <ShieldCheck size={20} />,
+      title: "완벽한 오염 차단",
+      description: "수분 흡수를 원천적으로 차단해 타일 사이 물때와 베란다 결로로 인한 오염이 고착화되지 않고 청소가 쉬워집니다.",
+      position: "object-top",
+    },
+    {
+      image: "/images/trust/trust-4.jpg",
+      icon: <Layers size={20} />,
+      title: "숙련 전문팀 직접 시공",
+      description: "하도급 없는 직영 책임 시공을 원칙으로 삼아, 수많은 신축 및 구축 현장에서 검증된 장인이 섬세하게 마감합니다.",
+    },
+  ];
+
+  const points = isFinish ? finishPoints : moldPoints;
+
   // 모바일 전용 단축 설명 (2줄 내외)
-  const mobileDescriptions = [
+  const moldMobileDescriptions = [
     "단순 청소가 아닌 곰팡이 발생 근본 원인(결로, 누수 등)을 정확히 진단합니다.",
     "특수 코팅 및 단열 보완을 적용해 곰팡이가 다시 재발하지 않도록 시공합니다.",
     "현장 오염 상태에 꼭 필요한 합리적인 맞춤 시공만을 투명하게 제안합니다.",
     "상담부터 사후 관리까지 전 과정을 사진으로 기록하며 투명하게 책임집니다."
   ];
+
+  const finishMobileDescriptions = [
+    "밀착 시공을 위해 바탕면 연마 및 줄눈 틈 파내기 등 밑작업을 정교하게 진행합니다.",
+    "유해물질 없는 최고급 친환경 바이오 세라믹 및 고밀도 정품 줄눈재만 사용합니다.",
+    "수분과 먼지가 스며들지 못하게 원천 차단하여 가벼운 물청소만으로 유지됩니다.",
+    "시공팀이 직접 상담 내용과 동일하게 책임지고 균일하고 반듯하게 마감합니다."
+  ];
+
+  const mobileDescriptions = isFinish ? finishMobileDescriptions : moldMobileDescriptions;
 
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -54,15 +98,17 @@ const TrustPoints = () => {
         {/* 공통 헤더 */}
         <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-20">
           <h2 className="text-3xl lg:text-5xl font-black mb-4 lg:mb-6">
-            모두종합환경이<br className="lg:hidden" /> <span className="text-primary-blue">특별한 4가지 이유</span>
+            {operator.operatorName}이<br className="lg:hidden" /> <span className="text-primary-blue">특별한 4가지 이유</span>
           </h2>
           <div className="w-20 h-1.5 bg-primary-blue mx-auto mb-6 lg:mb-8 rounded-full"></div>
           <p className="text-gray-500 text-base lg:text-lg font-medium">
-            단순 청소 업체와 비교를 거부합니다. 우리는 고객님의 주거 환경을 연구합니다.
+            {isFinish 
+              ? "오랫동안 유지되는 깨끗하고 쾌적한 공간을 선사해 드립니다." 
+              : "단순 청소 업체와 비교를 거부합니다. 우리는 고객님의 주거 환경을 연구합니다."}
           </p>
         </div>
 
-        {/* 1. PC 화면 레이아웃 (기존 유지) */}
+        {/* 1. PC 화면 레이아웃 */}
         <div className="hidden lg:grid grid-cols-4 gap-8">
           {points.map((point, index) => (
             <div
@@ -96,7 +142,7 @@ const TrustPoints = () => {
           ))}
         </div>
 
-        {/* 2. 모바일 화면 전용 레이아웃 (대폭 압축 및 아코디언화) */}
+        {/* 2. 모바일 화면 전용 레이아웃 */}
         <div className="block lg:hidden max-w-md mx-auto space-y-6">
           {/* 4가지 이유 요약 뱃지 리스트 */}
           <div className="grid grid-cols-2 gap-2 mb-6">
@@ -113,7 +159,7 @@ const TrustPoints = () => {
             ))}
           </div>
 
-          {/* 첫 번째 카드: 이미지 포함 강조 카드 (정밀한 원인 진단) */}
+          {/* 첫 번째 카드: 이미지 포함 강조 카드 (정밀한 밑작업/진단) */}
           <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md">
             <div className="relative aspect-[16/9] overflow-hidden">
               <Image
@@ -181,11 +227,11 @@ const TrustPoints = () => {
           {/* 모바일 하단 CTA */}
           <div className="pt-4">
             <a
-              href="tel:010-8309-9249"
+              href={`tel:${operator.contactPhone}`}
               className="w-full h-12 flex items-center justify-center space-x-2 bg-primary-blue text-white rounded-xl font-bold text-[15px] shadow-lg shadow-primary-blue/20 hover:bg-blue-700 transition-colors"
             >
               <Phone size={18} />
-              <span>사진으로 원인 상담받기</span>
+              <span>{isFinish ? "친환경 마감 무료 견적 받기" : "사진으로 원인 상담받기"}</span>
             </a>
           </div>
         </div>

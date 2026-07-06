@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import { DynamicContent } from "@/lib/dynamicHome";
+import { DEFAULT_OPERATOR } from "@/lib/operatorConfig";
 
 const CaseCard = ({ id, before, after }: { id: string; before: string; after: string }) => {
   const [sliderPos, setSliderPos] = useState(50);
@@ -94,8 +96,11 @@ const CaseCard = ({ id, before, after }: { id: string; before: string; after: st
   );
 };
 
-const Cases = () => {
-  const caseList = [
+const Cases = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
+  const isFinish = dynamic?.templateType === "finish";
+  const operator = dynamic?.operator || DEFAULT_OPERATOR;
+
+  const moldCases = [
     { id: "01", before: "/images/cases/01전.JPG", after: "/images/cases/01후.JPG" },
     { id: "02", before: "/images/cases/02전.JPG", after: "/images/cases/02후.JPG" },
     { id: "03", before: "/images/cases/03전.JPG", after: "/images/cases/03후.JPG" },
@@ -104,21 +109,33 @@ const Cases = () => {
     { id: "06", before: "/images/cases/06전.JPG", after: "/images/cases/06후.JPG" },
   ];
 
+  // B그룹(마감형) 전용 사례 데이터 분리 (우선 7~10번 적용, 향후 마감 전용 이미지 추가/교체 용이)
+  const finishCases = [
+    { id: "07", before: "/images/cases/07전.JPG", after: "/images/cases/07후.JPG" },
+    { id: "08", before: "/images/cases/08전.JPG", after: "/images/cases/08후.JPG" },
+    { id: "09", before: "/images/cases/09전.JPG", after: "/images/cases/09후.JPG" },
+    { id: "10", before: "/images/cases/10전.JPG", after: "/images/cases/10후.JPG" },
+  ];
+
+  const caseList = isFinish ? finishCases : moldCases;
+
   return (
     <section id="cases" className="py-32 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col mb-20">
           <div className="text-secondary-blue font-black mb-4 uppercase tracking-[0.4em] text-xs opacity-50">
-            Success Cases
+            {isFinish ? "Finish Gallery" : "Success Cases"}
           </div>
           <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tighter leading-tight relative">
-            <span className="relative z-10">수많은 현장이 증명하는</span><br />
-            <span className="text-primary-blue drop-shadow-sm">모두종합환경</span>의 기술력
+            <span className="relative z-10">
+              {isFinish ? "정밀 시공으로 탄생한" : "수많은 현장이 증명하는"}
+            </span><br />
+            <span className="text-primary-blue drop-shadow-sm">{operator.operatorName}</span>의 시공 사례
             <div className="absolute -left-4 top-0 w-1 h-full bg-primary-blue/20 rounded-full" />
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14">
+        <div className={`grid grid-cols-1 md:grid-cols-2 ${isFinish ? "lg:grid-cols-2 max-w-5xl mx-auto" : "lg:grid-cols-3"} gap-10 lg:gap-14`}>
           {caseList.map((item, index) => (
             <CaseCard key={index} {...item} />
           ))}

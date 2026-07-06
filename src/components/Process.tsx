@@ -11,33 +11,48 @@ import {
   Paintbrush, 
   House, 
   Layers, 
-  ChevronDown 
+  Sparkles,
+  ChevronDown,
+  Phone
 } from "lucide-react";
 import { DynamicContent } from "@/lib/dynamicHome";
+import { DEFAULT_OPERATOR } from "@/lib/operatorConfig";
 
 const Process = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
+  const isFinish = dynamic?.templateType === "finish";
+  const operator = dynamic?.operator || DEFAULT_OPERATOR;
+
   // 모바일에서 활성화(기본 펼침)할 서비스 카드를 설정합니다.
-  // dynamic.service에 따라 강조할 시공 항목을 매핑합니다.
   const getActiveServiceId = () => {
     if (!dynamic) return "곰팡이제거";
     const svc = dynamic.service;
     if (svc.includes("단열시공")) return "단열시공";
     if (svc.includes("탄성코트")) return "탄성코트";
+    if (svc.includes("줄눈시공") || svc.includes("줄눈")) return "줄눈시공";
     if (svc.includes("결로방지") || svc.includes("페인트")) return "결로방지";
-    return "곰팡이제거";
+    return isFinish ? "탄성코트" : "곰팡이제거";
   };
 
   const activeServiceId = getActiveServiceId();
   const [openServiceId, setOpenServiceId] = useState<string | null>(activeServiceId);
 
-  const steps = [
+  const moldSteps = [
     { title: "상담 접수", icon: <MessageSquareText size={20} /> },
     { title: "사진/방문 진단", icon: <Camera size={20} /> },
     { title: "원인별 견적 안내", icon: <FileText size={20} /> },
     { title: "시공 및 사후 안내", icon: <CheckCircle2 size={20} /> }
   ];
 
-  const services = [
+  const finishSteps = [
+    { title: "상담 접수", icon: <MessageSquareText size={20} /> },
+    { title: "현장 상태 확인", icon: <Camera size={20} /> },
+    { title: "맞춤 견적 안내", icon: <FileText size={20} /> },
+    { title: "정밀 시공 및 검수", icon: <CheckCircle2 size={20} /> }
+  ];
+
+  const steps = isFinish ? finishSteps : moldSteps;
+
+  const allServices = [
     {
       id: "곰팡이제거",
       title: "곰팡이제거 및 방지코팅",
@@ -61,12 +76,24 @@ const Process = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
     },
     {
       id: "탄성코트",
-      title: "탄성코트",
+      title: "탄성코트 시공",
       icon: <Layers size={24} />,
       image: "/images/process/process-4.jpg",
-      description: "베란다와 다용도실의 벽면을 오염과 습기로부터 영구 보호하는 프리미엄 친환경 세라믹/탄성코트를 도포합니다."
+      description: "베란다와 다용도실의 벽면을 오염과 습기로부터 반영구 보호하는 프리미엄 친환경 세라믹/탄성코트를 도포합니다."
+    },
+    {
+      id: "줄눈시공",
+      title: "친환경 줄눈시공",
+      icon: <Sparkles size={24} />,
+      image: "/images/process/process-1.jpg",
+      description: "타일 사이 백시멘트를 정교하게 제거한 뒤, 오염과 물때를 원천 차단하고 인테리어 효과를 극대화하는 친환경 줄눈재를 채워넣습니다."
     }
   ];
+
+  // 템플릿 타입에 따라 노출할 서비스를 필터링 및 순서 조정
+  const services = isFinish 
+    ? allServices.filter(s => s.id === "탄성코트" || s.id === "줄눈시공")
+    : allServices.filter(s => s.id !== "줄눈시공");
 
   const toggleServiceAccordion = (id: string) => {
     setOpenServiceId(openServiceId === id ? null : id);
@@ -78,7 +105,7 @@ const Process = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
         {/* 공통 헤더 */}
         <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-20">
           <h2 className="text-3xl lg:text-4xl font-black mb-4 lg:mb-6">
-            모두종합환경의<br className="lg:hidden" /> <span className="text-primary-blue">체계적인 시공 프로세스</span>
+            {operator.operatorName}의<br className="lg:hidden" /> <span className="text-primary-blue">체계적인 시공 프로세스</span>
           </h2>
           <div className="w-20 h-1.5 bg-primary-blue mx-auto mb-6 rounded-full"></div>
           <p className="text-gray-500 text-base lg:text-lg font-medium">
@@ -86,7 +113,7 @@ const Process = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
           </p>
         </div>
 
-        {/* 1. PC 화면 레이아웃 (기존 유지) */}
+        {/* 1. PC 화면 레이아웃 */}
         <div className="hidden lg:block max-w-6xl mx-auto">
           <div className="flex flex-col items-center">
             {/* Step 1 */}
@@ -100,7 +127,7 @@ const Process = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
             {/* Step 2 */}
             <ProcessBox 
               icon={<Camera size={28} />} 
-              title="사진 및 현장 방문 진단" 
+              title={isFinish ? "사진 및 현장 상태 확인" : "사진 및 현장 방문 진단"} 
             />
 
             <ConnectorLine />
@@ -108,7 +135,7 @@ const Process = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
             {/* Step 3 */}
             <ProcessBox 
               icon={<FileText size={28} />} 
-              title="시공 및 견적 안내" 
+              title={isFinish ? "맞춤 시공 및 견적 안내" : "시공 및 견적 안내"} 
               active
             />
 
@@ -116,16 +143,26 @@ const Process = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
             <div className="w-full h-16 relative">
               <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 64">
                 <path d="M 500 0 L 500 32" stroke="#0046FF" strokeWidth="2" fill="none" />
-                <path d="M 125 32 L 875 32" stroke="#0046FF" strokeWidth="2" fill="none" />
-                <path d="M 125 32 L 125 64" stroke="#0046FF" strokeWidth="2" fill="none" />
-                <path d="M 375 32 L 375 64" stroke="#0046FF" strokeWidth="2" fill="none" />
-                <path d="M 625 32 L 625 64" stroke="#0046FF" strokeWidth="2" fill="none" />
-                <path d="M 875 32 L 875 64" stroke="#0046FF" strokeWidth="2" fill="none" />
+                {services.length === 2 ? (
+                  <>
+                    <path d="M 250 32 L 750 32" stroke="#0046FF" strokeWidth="2" fill="none" />
+                    <path d="M 250 32 L 250 64" stroke="#0046FF" strokeWidth="2" fill="none" />
+                    <path d="M 750 32 L 750 64" stroke="#0046FF" strokeWidth="2" fill="none" />
+                  </>
+                ) : (
+                  <>
+                    <path d="M 125 32 L 875 32" stroke="#0046FF" strokeWidth="2" fill="none" />
+                    <path d="M 125 32 L 125 64" stroke="#0046FF" strokeWidth="2" fill="none" />
+                    <path d="M 375 32 L 375 64" stroke="#0046FF" strokeWidth="2" fill="none" />
+                    <path d="M 625 32 L 625 64" stroke="#0046FF" strokeWidth="2" fill="none" />
+                    <path d="M 875 32 L 875 64" stroke="#0046FF" strokeWidth="2" fill="none" />
+                  </>
+                )}
               </svg>
             </div>
 
             {/* Step 4: Diverging Grid (with images) */}
-            <div className="grid grid-cols-4 gap-8 w-full">
+            <div className={`grid ${services.length === 2 ? "grid-cols-2 max-w-4xl" : "grid-cols-4"} gap-8 w-full`}>
               {services.map((svc) => (
                 <ProcessBox 
                   key={svc.id}
@@ -140,24 +177,35 @@ const Process = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
             {/* Converging SVG Lines (Desktop) */}
             <div className="w-full h-16 relative">
               <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 64">
-                <path d="M 125 0 L 125 32" stroke="#0046FF" strokeWidth="1.5" fill="none" />
-                <path d="M 375 0 L 375 32" stroke="#0046FF" strokeWidth="1.5" fill="none" />
-                <path d="M 625 0 L 625 32" stroke="#0046FF" strokeWidth="1.5" fill="none" />
-                <path d="M 875 0 L 875 32" stroke="#0046FF" strokeWidth="1.5" fill="none" />
-                <path d="M 125 32 L 875 32" stroke="#0046FF" strokeWidth="1.5" fill="none" />
-                <path d="M 500 32 L 500 64" stroke="#0046FF" strokeWidth="1.5" fill="none" />
+                {services.length === 2 ? (
+                  <>
+                    <path d="M 250 0 L 250 32" stroke="#0046FF" strokeWidth="1.5" fill="none" />
+                    <path d="M 750 0 L 750 32" stroke="#0046FF" strokeWidth="1.5" fill="none" />
+                    <path d="M 250 32 L 750 32" stroke="#0046FF" strokeWidth="1.5" fill="none" />
+                    <path d="M 500 32 L 500 64" stroke="#0046FF" strokeWidth="1.5" fill="none" />
+                  </>
+                ) : (
+                  <>
+                    <path d="M 125 0 L 125 32" stroke="#0046FF" strokeWidth="1.5" fill="none" />
+                    <path d="M 375 0 L 375 32" stroke="#0046FF" strokeWidth="1.5" fill="none" />
+                    <path d="M 625 0 L 625 32" stroke="#0046FF" strokeWidth="1.5" fill="none" />
+                    <path d="M 875 0 L 875 32" stroke="#0046FF" strokeWidth="1.5" fill="none" />
+                    <path d="M 125 32 L 875 32" stroke="#0046FF" strokeWidth="1.5" fill="none" />
+                    <path d="M 500 32 L 500 64" stroke="#0046FF" strokeWidth="1.5" fill="none" />
+                  </>
+                )}
               </svg>
             </div>
 
             {/* Step 5: Converge */}
             <ProcessBox 
               icon={<CheckCircle2 size={28} />} 
-              title="검수 및 마무리" 
+              title={isFinish ? "최종 검수 및 마무리" : "검수 및 마무리"} 
             />
           </div>
         </div>
 
-        {/* 2. 모바일 화면 전용 레이아웃 (압축 및 시공 분리/강조) */}
+        {/* 2. 모바일 화면 전용 레이아웃 */}
         <div className="block lg:hidden max-w-md mx-auto space-y-8">
           {/* A. 진행 절차 4단계 가로 압축 리스트 */}
           <div>
@@ -185,7 +233,7 @@ const Process = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
               </h3>
               {dynamic && (
                 <p className="text-[11px] font-bold text-primary-blue">
-                  * {dynamic.region} 현장은 &apos;{services.find(s => s.id === activeServiceId)?.title}&apos; 집중 강조
+                  * {dynamic.region} 현장은 &apos;{allServices.find(s => s.id === activeServiceId)?.title || activeServiceId}&apos; 집중 강조
                 </p>
               )}
             </div>
@@ -234,16 +282,19 @@ const Process = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
                       />
                     </button>
 
-                    {/* 아코디언 바디 (매칭된 것은 기본적으로 펼쳐지고 이미지 포함) */}
+                    {/* 아코디언 바디 */}
                     {isOpen && (
                       <div className="px-4 pb-5 pt-0 space-y-3">
-                        {/* 강조 시공이거나 사용자가 펼쳤을 때 이미지를 보여줌 */}
                         <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden">
                           <Image 
                             src={svc.image}
                             alt={svc.title}
                             fill
                             className="object-cover"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.src = "/images/process/process-1.jpg";
+                            }}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                         </div>
@@ -256,6 +307,17 @@ const Process = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
                 );
               })}
             </div>
+          </div>
+          
+          {/* 모바일 추가 CTA 전화버튼 */}
+          <div className="pt-4">
+            <a
+              href={`tel:${operator.contactPhone}`}
+              className="w-full h-12 flex items-center justify-center space-x-2 bg-primary-blue text-white rounded-xl font-bold text-[15px] shadow-lg shadow-primary-blue/20 hover:bg-blue-700 transition-colors"
+            >
+              <Phone size={18} />
+              <span>{isFinish ? "친환경 마감 무료 견적 받기" : "사진으로 원인 상담받기"}</span>
+            </a>
           </div>
         </div>
 
@@ -277,6 +339,10 @@ const ProcessBox = ({ icon, title, active, small, image }: { icon: React.ReactNo
           alt={title}
           fill
           className="object-cover"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "/images/process/process-1.jpg";
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
       </div>

@@ -1,6 +1,9 @@
+import { OperatorInfo, getOperator } from "./operatorConfig";
+
 export interface DynamicContent {
   region: string;
   service: string;
+  templateType: "mold" | "finish";
   h1: string;
   subtitle: string;
   introText: string;
@@ -8,6 +11,7 @@ export interface DynamicContent {
   ctaText: string;
   metaTitle: string;
   metaDesc: string;
+  operator: OperatorInfo;
 }
 
 export const getDynamicContent = (k?: string | null): DynamicContent | null => {
@@ -20,9 +24,13 @@ export const getDynamicContent = (k?: string | null): DynamicContent | null => {
   const region = parts[0];
   const service = parts.slice(1).join("-");
 
+  const isFinishType = service.includes("탄성코트") || service.includes("줄눈시공");
+  const templateType = isFinishType ? "finish" : "mold";
+
   let content: Partial<DynamicContent> = {
     region,
     service,
+    templateType,
   };
 
   // 서비스별 문구 분기
@@ -70,6 +78,17 @@ export const getDynamicContent = (k?: string | null): DynamicContent | null => {
       metaTitle: `${region} 결로방지 페인트 시공 | 친환경 곰팡이 방지 페인트 전문`,
       metaDesc: `${region} 베란다, 다용도실 결로방지 페인트 시공. 결로 차단과 친환경 방지 페인트 도포로 곰팡이 발생을 차단합니다.`,
     };
+  } else if (service.includes("줄눈시공") || service.includes("줄눈")) {
+    content = {
+      ...content,
+      h1: `${region} 줄눈시공`,
+      subtitle: `${region} 욕실과 베란다 타일을 위생적이고 아름답게`,
+      introText: `타일 틈새 오염 방지와 청소 편의성을 극대화하는 친환경 줄눈시공. ${region} 지역의 숙련된 전문가가 고품질 친환경 소재로 정밀하게 시공합니다.`,
+      expertText: `${region} 욕실, 현관, 베란다 등의 타일 줄눈 틈새 오염을 완전히 긁어내고, 내오염성이 탁월한 친환경 줄눈재로 빈틈없이 채워 넣습니다.`,
+      ctaText: `무료상담 전화하기`,
+      metaTitle: `${region} 줄눈시공 전문업체 | 친환경 줄눈 코팅 전문`,
+      metaDesc: `${region} 욕실/베란다 줄눈시공. 곰팡이 방지는 물론 물때 오염 차단, 인테리어 효과까지! 꼼꼼하고 완벽한 시공을 약속드립니다.`,
+    };
   } else {
     // 기타 키워드 대응
     const displayService = service === "기타" ? "현장 시공" : service;
@@ -84,6 +103,9 @@ export const getDynamicContent = (k?: string | null): DynamicContent | null => {
       metaDesc: `${region} ${displayService} 상담. 원인 파악이 어려운 곰팡이와 결로 문제, 전문가의 정밀 진단 and 전문 시공으로 깨끗하게 해결하세요.`,
     };
   }
+
+  const op = getOperator(templateType, region);
+  content.operator = op;
 
   return content as DynamicContent;
 };
