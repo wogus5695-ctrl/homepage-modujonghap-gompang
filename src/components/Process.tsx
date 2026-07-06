@@ -85,7 +85,7 @@ const Process = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
       id: "줄눈시공",
       title: "친환경 줄눈시공",
       icon: <Sparkles size={24} />,
-      image: "/images/process/process-1.jpg",
+      image: "/images/process/process-grout.jpg",
       description: "타일 사이 백시멘트를 정교하게 제거한 뒤, 오염과 물때를 원천 차단하고 인테리어 효과를 극대화하는 친환경 줄눈재를 채워넣습니다."
     }
   ];
