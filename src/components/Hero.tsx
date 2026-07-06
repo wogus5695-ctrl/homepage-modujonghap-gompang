@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { Phone } from "lucide-react";
 import { DynamicContent } from "@/lib/dynamicHome";
