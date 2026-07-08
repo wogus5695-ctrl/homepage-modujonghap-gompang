@@ -189,7 +189,7 @@ const ProblemRecognition = ({ dynamic }: { dynamic?: DynamicContent | null }) =>
               href="#contact"
               className="w-full h-12 flex items-center justify-center space-x-2 bg-primary-blue text-white rounded-xl font-bold text-[15px] shadow-lg shadow-primary-blue/20 hover:bg-blue-700 transition-colors"
             >
-              <span>{isFinish ? "우리집 마감 상태 무료 진단받기" : "우리집 곰팡이 원인 확인하기"}</span>
+              <span>{isFinish ? "우리집 마감 상태 문의하기" : "우리집 곰팡이 원인 확인하기"}</span>
             </a>
           </div>
 

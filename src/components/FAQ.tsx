@@ -61,10 +61,6 @@ const FAQ = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
         question: "입주 예정인데 입주 청소 전과 후 중 언제 시공하는 것이 가장 좋나요?",
         answer: "반드시 '입주 청소 전'에 시공하시는 것을 강력히 추천합니다. 시공 중 발생하는 미세한 먼지나 벽면 밑작업 잔해물들이 입주 청소 시 완벽하게 씻겨 나가기 때문에 훨씬 깨끗하고 완성도 높은 주거 상태로 입주하실 수 있습니다.",
       },
-      {
-        question: "시공 후 사후 관리(A/S) 기간은 어떻게 보장되나요?",
-        answer: `${operator.operatorName}은 시공 품질에 강한 자부심을 가지고 있습니다. 시공 완료 후 자재 결함이나 기포 들뜸 등의 하자가 발생할 경우 1년간 무상으로 책임 A/S를 제공하고 있습니다.`,
-      },
     ];
 
     if (!dynamic) return isFinish ? finishFaqs : moldFaqs;

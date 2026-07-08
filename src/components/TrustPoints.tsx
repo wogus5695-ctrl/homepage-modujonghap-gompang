@@ -231,7 +231,7 @@ const TrustPoints = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
               className="w-full h-12 flex items-center justify-center space-x-2 bg-primary-blue text-white rounded-xl font-bold text-[15px] shadow-lg shadow-primary-blue/20 hover:bg-blue-700 transition-colors"
             >
               <Phone size={18} />
-              <span>{isFinish ? "친환경 마감 무료 견적 받기" : "사진으로 원인 상담받기"}</span>
+              <span>{isFinish ? "친환경 마감 견적 문의" : "사진으로 원인 상담받기"}</span>
             </a>
           </div>
         </div>
