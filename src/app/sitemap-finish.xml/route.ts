@@ -36,7 +36,9 @@ export async function GET() {
     });
   });
 
-  const xmlEntries = urls.map((url) => `  <url>
+  const uniqueUrls = Array.from(new Set(urls));
+
+  const xmlEntries = uniqueUrls.map((url) => `  <url>
     <loc>${url}</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>weekly</changefreq>
