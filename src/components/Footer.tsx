@@ -21,11 +21,19 @@ const Footer = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
             <p className="text-[15px] leading-relaxed max-w-md text-gray-600">
               {isFinish ? (
                 <>
-                  모두종합환경은 탄성코트 및 줄눈시공 전문 브랜드입니다. {dynamic && <>{dynamic.region} 현장의 베란다 벽면과 타일 틈새의 오염 방지 및 공간 미관 개선을 위해 최적화된 {dynamic.service} 솔루션을 제공합니다. </>}노하우와 친환경 고급 자재로 쾌적하고 깔끔한 주거 가치를 선사합니다.
+                  모두종합환경은 탄성코트 및 줄눈시공 전문 브랜드입니다. {dynamic ? (
+                    <>{dynamic.region} 현장의 베란다 벽면과 타일 틈새의 오염 방지 및 공간 미관 개선을 위해 최적화된 {dynamic.service} 솔루션을 제공합니다. {dynamic.bottomEndingText}</>
+                  ) : (
+                    "노하우와 친환경 고급 자재로 쾌적하고 깔끔한 주거 가치를 선사합니다."
+                  )}
                 </>
               ) : (
                 <>
-                  모두종합환경은 곰팡이제거, 단열시공, 탄성코트 전문 브랜드입니다. {dynamic && <>{dynamic.region} 현장의 결로·곰팡이 등 다양한 환경 문제 해결을 위해 맞춤형 {dynamic.service} 솔루션을 제공합니다. </>}노하우와 전문 장비를 통한 정밀 진단으로 쾌적하고 건강한 주거 환경을 약속합니다.
+                  모두종합환경은 곰팡이제거, 단열시공, 결로방지 전문 브랜드입니다. {dynamic ? (
+                    <>{dynamic.region} 현장의 결로·곰팡이 등 다양한 환경 문제 해결을 위해 맞춤형 {dynamic.service} 솔루션을 제공합니다. {dynamic.bottomEndingText}</>
+                  ) : (
+                    "노하우와 전문 장비를 통한 정밀 진단으로 쾌적하고 건강한 주거 환경을 약속합니다."
+                  )}
                 </>
               )}
             </p>

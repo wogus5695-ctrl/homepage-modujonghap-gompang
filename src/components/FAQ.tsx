@@ -65,75 +65,16 @@ const FAQ = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
 
     if (!dynamic) return isFinish ? finishFaqs : moldFaqs;
 
-    const svc = dynamic.service;
-    const region = dynamic.region;
-
-    // 만약 B그룹 템플릿일 경우, B그룹 FAQ를 우선 반환합니다.
-    if (isFinish) {
-      return [
-        {
-          question: `${region} 지역에서 베란다 탄성코트와 타일 줄눈시공을 동시에 진행할 수 있나요?`,
-          answer: `네, 동시 시공 및 당일 연속 시공이 가능합니다! ${region} 고객님의 일정에 맞추어 보양과 밑작업을 순차적으로 진행하여 하루 만에 깔끔한 친환경 프리미엄 마감을 완성해 드립니다.`,
-        },
-        ...finishFaqs
-      ];
-    }
-
-    // A그룹 내 서비스별 개별 분기
-    if (svc.includes("곰팡이제거")) {
-      return [
-        {
-          question: `사진만으로 ${region} 곰팡이제거 상담과 견적이 가능한가요?`,
-          answer: `네, 가능합니다! 곰팡이가 발생한 현장 사진을 선명하게 찍어 보내주시면, 전문 상담사가 발생 원인 분석과 함께 대략적인 시공 견적을 빠르게 안내해 드립니다.`,
-        },
-        {
-          question: `${region} 곰팡이제거 후 다시 생기지 않게 하려면 무엇을 확인해야 하나요?`,
-          answer: `단순 제거제 사용은 임시방편입니다. 결로나 습기 발생 원인을 진단하고, 항균 코팅 및 단열 상태 점검 등 근본적인 재발 방지 처리를 함께 해주어야 곰팡이가 재발하지 않습니다.`,
-        },
-        ...moldFaqs.slice(2)
-      ];
-    }
-
-    if (svc.includes("단열시공")) {
-      return [
-        {
-          question: `결로 때문에 ${region} 단열시공이 필요한지 사진만으로 확인할 수 있나요?`,
-          answer: `네, 파악이 가능합니다! 결로로 벽지가 젖었거나 물방울이 맺히는 현상, 혹은 모서리 곰팡이 사진을 보내주시면 상태를 분석하여 단열 보강이 필요한 수준인지 무상 진단해 드립니다.`,
-        },
-        {
-          question: `${region} 단열시공을 진행하면 곰팡이 재발 방지에도 도움이 되나요?`,
-          answer: `네, 근본적인 해결책이 됩니다! 실내외 온도 차이로 인해 이슬이 맺히는 결로를 고효율 단열재 밀착 시공으로 원천 차단하기 때문에, 결로와 곰팡이를 동시에 확실히 예방할 수 있습니다.`,
-        },
-        ...moldFaqs.slice(2)
-      ];
-    }
-
-    if (svc.includes("결로방지") || svc.includes("페인트")) {
-      return [
-        {
-          question: `${region} 결로방지 페인트만으로 해결 가능한 상태인지 확인할 수 있나요?`,
-          answer: `네, 사진으로 1차 진단이 가능합니다! 벽면 안쪽의 누수가 아닌 단순 실내 온도차에 의한 결로 곰팡이인 경우, 친환경 결로방지 페인트 도장만으로도 훌륭한 예방 효과를 볼 수 있으며 시공 타당성을 분석해 드립니다.`,
-        },
-        {
-          question: `곰팡이 제거 후 ${region} 결로방지 페인트를 함께 시공해야 하나요?`,
-          answer: `네, 추천해 드립니다! 깊이 침투한 곰팡이 포자를 사멸시킨 뒤에 결로방지 페인트를 칠해주어야 칠이 들뜨거나 안쪽에서부터 다시 팡이가 피어오르는 현상을 확실하게 예방할 수 있습니다.`,
-        },
-        ...moldFaqs.slice(2)
-      ];
-    }
-
-    // 기타 키워드 대응
-    const displayService = svc === "기타" ? "현장 시공" : svc;
     return [
       {
-        question: `사진만으로 ${region} ${displayService} 상담과 견적이 가능한가요?`,
-        answer: `네, 가능합니다! 시공이 필요한 부위의 사진을 찍어 보내주시면 전문 엔지니어가 작업 난이도와 시공 범위를 분석하여 대략적인 견적과 일정을 신속하게 안내해 드립니다.`,
+        question: dynamic.faq1Q,
+        answer: dynamic.faq1A,
       },
       {
-        question: `${region} ${displayService} 시공을 진행하면 곰팡이 및 결로 재발이 방지되나요?`,
-        answer: `네, 그렇습니다! 표면적 청소에 그치지 않고, 현장의 근본 원인을 진단하여 공간 맞춤 보완 처리를 함께 진행하므로 쾌적한 주거 상태가 오랫동안 지속됩니다.`,
+        question: dynamic.faq2Q,
+        answer: dynamic.faq2A,
       },
-      ...moldFaqs.slice(2)
+      ...(isFinish ? finishFaqs : moldFaqs.slice(2)),
     ];
   };
 
@@ -152,7 +93,9 @@ const FAQ = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
           </h2>
           <div className="w-20 h-1.5 bg-primary-light mx-auto mb-6 rounded-full"></div>
           <p className="text-gray-600 text-base lg:text-lg font-medium">
-            문의하시기 전, 가장 많이 궁금해하시는 내용들을 정리했습니다.
+            {isFinish 
+              ? "탄성코트 및 프리미엄 줄눈시공에 대해 가장 많이 하시는 질문들을 확인해 보세요."
+              : "곰팡이 제거 및 결로단열 시공에 대해 가장 많이 하시는 질문들을 확인해 보세요."}
           </p>
         </div>
 

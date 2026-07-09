@@ -1,11 +1,18 @@
 import { MetadataRoute } from 'next'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export async function generateSitemaps() {
+  return [
+    { id: 'static' },
+    { id: 'mold' },
+    { id: 'finish' },
+  ]
+}
+
+export default function sitemap({ id }: { id: string }): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.modujonghap.co.kr'
   
   const moldServices = ["곰팡이제거", "단열시공", "결로방지"]
   const finishServices = ["탄성코트", "줄눈시공"]
-  const allServices = [...moldServices, ...finishServices]
 
   const areaData = [
     { name: "강서구", dongs: ["염창동", "등촌동", "화곡본동", "화곡동", "우장산동", "가양동", "발산동", "공항동", "방화동"] },
@@ -48,14 +55,40 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { name: "성남시", dongs: ["신흥동", "태평동", "수진동", "단대동", "산성동", "양지동", "복정동", "위례동", "신촌동", "고등동", "성남동", "중앙동", "금광동", "은행동", "상대원동", "하대원동", "도촌동", "분당동", "수내동", "정자동", "율동", "서현동", "이매동", "야탑동", "판교동", "삼평동", "백현동", "금곡동", "구미동", "운중동", "대장동"] },
   ];
 
+  if (id === 'static') {
+    return [
+      {
+        url: baseUrl,
+        lastModified: new Date(),
+        changeFrequency: 'daily',
+        priority: 1.0,
+      },
+      {
+        url: `${baseUrl}/sitemap-seoul`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.5,
+      },
+      {
+        url: `${baseUrl}/sitemap-seoul-finish`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.5,
+      },
+    ]
+  }
+
+  // Choose services based on request ID
+  const selectedServices = id === 'finish' ? finishServices : moldServices;
+
   const dynamicRoutes = areaData.flatMap((area) => {
     const baseName = area.name.length > 2 ? area.name.replace(/[구시]$/, "") : area.name;
     
     // 1단계: 구/시 단위 키워드
-    const guRoutes = allServices.flatMap(service => {
+    const guRoutes = selectedServices.flatMap(service => {
       const routes = [];
       
-      // 풀네임 버전 (ex. 강북구-곰팡이제거)
+      // 풀네임 버전 (ex. 강서구-곰팡이제거)
       if (area.name !== baseName) {
         routes.push({
           url: `${baseUrl}/k/${encodeURIComponent(`${area.name}-${service}`)}`,
@@ -65,7 +98,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         });
       }
       
-      // 줄임말 버전 (ex. 강북-곰팡이제거)
+      // 줄임말 버전 (ex. 강서-곰팡이제거)
       routes.push({
         url: `${baseUrl}/k/${encodeURIComponent(`${baseName}-${service}`)}`,
         lastModified: new Date(),
@@ -78,7 +111,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     
     // 2단계: 동 단위 키워드
     const dongRoutes = area.dongs.flatMap(dong => 
-      allServices.map(service => ({
+      selectedServices.map(service => ({
         url: `${baseUrl}/k/${encodeURIComponent(`${dong}-${service}`)}`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
@@ -89,25 +122,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return [...guRoutes, ...dongRoutes];
   });
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/sitemap-seoul`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/sitemap-seoul-finish`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.5,
-    },
-    ...dynamicRoutes,
-  ]
+  return dynamicRoutes;
 }

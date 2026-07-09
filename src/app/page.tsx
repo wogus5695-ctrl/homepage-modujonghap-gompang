@@ -45,7 +45,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 
   const imageUrl = getThumbnailUrl(k);
   const canonicalUrl = k 
-    ? `https://www.modujonghap.co.kr/?k=${encodeURIComponent(k)}` 
+    ? `https://www.modujonghap.co.kr/k/${encodeURIComponent(k)}` 
     : "https://www.modujonghap.co.kr";
 
   if (!dynamic) {

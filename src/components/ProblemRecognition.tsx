@@ -31,32 +31,17 @@ const ProblemRecognition = ({ dynamic }: { dynamic?: DynamicContent | null }) =>
             {isFinish ? "Aesthetic & Value" : "Analysis & Risk"}
           </div>
           
-          {/* PC 타이틀 */}
-          <h2 className="hidden lg:block text-4xl md:text-6xl font-black !text-primary-blue mb-10 leading-tight tracking-tighter text-left">
+          {/* Unified H2 */}
+          <h2 className="text-3xl lg:text-4xl lg:text-6xl font-black !text-primary-blue mb-6 lg:mb-10 leading-tight tracking-tight lg:tracking-tighter text-center lg:text-left break-keep [word-break:keep-all]">
             {isFinish ? (
               <>
-                들뜨고 지저분한 벽면과 타일,<br />
-                방치하면 집의 가치가 떨어집니다.
+                <span className="hidden lg:inline">들뜨고 지저분한 벽면과 타일,<br />방치하면 집의 가치가 떨어집니다.</span>
+                <span className="inline lg:hidden">벗겨진 페인트와 오염된 타일 틈새,<br />전문 마감이 필요합니다</span>
               </>
             ) : (
               <>
-                곰팡이, 단순히 보기에만<br />
-                흉한 것이 아닙니다.
-              </>
-            )}
-          </h2>
-
-          {/* 모바일 타이틀 */}
-          <h2 className="block lg:hidden text-3xl font-black !text-primary-blue mb-6 leading-tight tracking-tight text-center break-keep [word-break:keep-all]">
-            {isFinish ? (
-              <>
-                벗겨진 페인트와 오염된 타일 틈새,<br />
-                전문 마감이 필요합니다
-              </>
-            ) : (
-              <>
-                곰팡이 방치,<br />
-                손해가 커질 수 있습니다
+                <span className="hidden lg:inline">곰팡이, 단순히 보기에만<br />흉한 것이 아닙니다.</span>
+                <span className="inline lg:hidden">곰팡이 방치,<br />손해가 커질 수 있습니다</span>
               </>
             )}
           </h2>

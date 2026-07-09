@@ -29,15 +29,17 @@ const FinalCTA = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
             )}
           </h2>
           <p className="text-lg md:text-xl text-gray-400 mb-16 font-medium leading-relaxed">
-            {isFinish ? (
+            {dynamic ? (
+              dynamic.ctaSubcopy
+            ) : isFinish ? (
               <>
                 더 이상 셀프 청소나 무의미한 관리로 스트레스받지 마세요.<br className="hidden md:block" />
-                {dynamic ? `${dynamic.region} 지역 담당 ` : ""}전문가가 직접 방문하여 친환경 명품 자재와 정밀 시공으로 보답하겠습니다.
+                전문가가 직접 방문하여 친환경 명품 자재와 정밀 시공으로 보답하겠습니다.
               </>
             ) : (
               <>
                 더 이상 고민하지 마세요. 지금 상담을 신청하시면<br className="hidden md:block" />
-                {dynamic ? `${dynamic.region} 지역 담당 ` : ""}전문가가 직접 방문하여 고객님 댁의 정확한 원인을 분석해 드립니다.
+                전문가가 직접 방문하여 고객님 댁의 정확한 원인을 분석해 드립니다.
               </>
             )}
           </p>
@@ -49,7 +51,7 @@ const FinalCTA = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
               className="w-full md:w-auto bg-primary-blue text-white px-10 py-5 rounded-2xl font-black text-xl shadow-[0_20px_50px_-10px_rgba(0,70,255,0.4)] hover:bg-blue-700 transition-all transform hover:-translate-y-1 flex items-center justify-center space-x-3 group"
             >
               <Phone size={24} />
-              <span>{isFinish ? "친환경 마감 견적 문의" : "무료상담 전화하기"}</span>
+              <span>{isFinish ? "사진 상담 & 마감 견적 문의" : "원인 분석 & 무료 상담 전화"}</span>
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
