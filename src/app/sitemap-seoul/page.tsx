@@ -12,9 +12,9 @@ export const metadata: Metadata = {
   },
 };
 
-import { areaData } from "@/lib/areaData";
+import { areaData, moldServices } from "@/lib/areaData";
 
-const services = ["곰팡이제거", "단열시공", "결로방지"];
+const services = moldServices;
 
 export default function SitemapSeoul() {
   return (

@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server';
-import { areaData } from '@/lib/areaData';
+import { areaData, moldServices } from '@/lib/areaData';
 
 export const dynamic = 'force-static';
 
 export async function GET() {
   const baseUrl = 'https://www.modujonghap.co.kr';
   const currentDate = new Date().toISOString().split('T')[0];
-  const moldServices = ["곰팡이제거", "단열시공", "결로방지"];
 
   // Generate paths
   const urls: string[] = [];

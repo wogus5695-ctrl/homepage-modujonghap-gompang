@@ -3,6 +3,9 @@ export interface AreaConfig {
   dongs: string[];
 }
 
+export const moldServices = ["곰팡이제거", "단열시공", "결로방지"];
+export const finishServices = ["탄성코트", "줄눈시공"];
+
 export const areaData: AreaConfig[] = [
   {
     name: "강서구",

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
-import { areaData } from "@/lib/areaData";
+import { areaData, finishServices } from "@/lib/areaData";
 
 export const metadata: Metadata = {
   title: "수도권 지역별 탄성코트·줄눈시공 서비스 안내",
@@ -13,9 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-
-
-const services = ["탄성코트", "줄눈시공"];
+const services = finishServices;
 
 export default function SitemapSeoulFinish() {
   return (
