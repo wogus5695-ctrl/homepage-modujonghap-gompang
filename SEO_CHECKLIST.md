@@ -69,3 +69,20 @@
 | **곰팡이 허브** | `https://www.modujonghap.co.kr/sitemap-seoul` | H1 1개, 자치구 H2 확인, 각 자치구 아래 소개글 존재 확인 |
 | **마감 허브** | `https://www.modujonghap.co.kr/sitemap-seoul-finish` | H1 1개, 자치구 H2 확인, 하단 마감 전용 CTA 카드 작동 확인 |
 | **사이트맵** | `https://www.modujonghap.co.kr/sitemap.xml` | 3종의 서브 sitemap 리스트 정상 표출 여부 확인 |
+
+---
+
+## 5. 배포 후 사이트맵 (Sitemap) 최종 무결성 검수 10대 체크리스트
+
+운영 서버에 배포가 완료된 직후, 브라우저 주소창이나 curl 명령어를 통해 반드시 확인해야 할 10가지 정합성 기준입니다.
+
+- [ ] **1. sitemap.xml 인덱스 출력 확인**: 브라우저에서 `/sitemap.xml`을 열었을 때, `<sitemapindex>` 태그 규격 하위에 `sitemap-main.xml`, `sitemap-mold.xml`, `sitemap-finish.xml` 3개의 하위 경로가 정상 표출되는지 확인
+- [ ] **2. 3대 서브 사이트맵 200 OK 응답 확인**: 각 개별 사이트맵 주소(main, mold, finish) 호출 시 404가 발생하지 않고 HTTP 상태 코드 200 성공 응답을 반환하는지 확인
+- [ ] **3. sitemap-main.xml 내 고정 페이지 격리 확인**: `/sitemap-main.xml` 안에 오직 메인 루트(`/`), 곰팡이 허브(`/sitemap-seoul`), 마감 허브(`/sitemap-seoul-finish`) 3가지의 정적 주소만 들어있고 동적 키워드(`/k/...`) 주소는 완전히 제외되었는지 확인
+- [ ] **4. sitemap-mold.xml 내 곰팡이군 URL 노출 확인**: `/sitemap-mold.xml` 내에 `곰팡이제거`, `단열시공`, `결로방지` 서비스에 대한 상세 `/k/지역명-작업명` URL 목록이 `<url><loc>` 태그로 정상 노출되는지 확인
+- [ ] **5. sitemap-finish.xml 내 finish군 URL 노출 확인**: `/sitemap-finish.xml` 내에 `탄성코트`, `줄눈시공` 서비스에 대한 상세 `/k/지역명-작업명` URL 목록이 `<url><loc>` 태그로 정상 노출되는지 확인
+- [ ] **6. 구형 ?k= 쿼리 파라미터 제외**: 모든 XML 소스 내에 `?k=` 형태의 주소가 완전히 제외되고 깨끗한 `/k/...` 형식만 존재하는지 확인
+- [ ] **7. 내부 처리 리소스 URL 제외**: `/_next/image?url=...` 등 콘텐츠와 상관없는 Next.js 시스템 URL이 단 하나도 섞이지 않았는지 확인
+- [ ] **8. 중복 URL 필터링**: 관악구/강남구 신사동 등 동일한 동명 키워드로 인해 중복 생성된 상세 주소가 제거되고 오직 순수 고유 URL셋만 누적되어 있는지 확인
+- [ ] **9. 브라우저 XML 파싱 에러 유무 확인**: 브라우저(Chrome/Safari/Edge 등)로 사이트맵 URL을 직접 호출했을 때, `XML parsing error` 문구 없이 정상적인 트랙 구조(또는 XML 문서 스타일)로 깨끗하게 열리는지 확인
+- [ ] **10. 신규 키워드 자동 반영 모델 확인**: 새 행정구역 정보 추가 시 별도의 사이트맵 파일 코딩 없이 중앙 데이터(`src/lib/areaData.ts`) 추가만으로 사이트맵 파일 빌드 시 자동 연동 및 포함되는지 검증
