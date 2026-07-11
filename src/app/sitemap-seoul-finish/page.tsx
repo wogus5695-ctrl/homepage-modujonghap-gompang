@@ -90,9 +90,9 @@ export default function SitemapSeoulFinish() {
           
           {/* Bottom CTA Card */}
           <div className="mt-28 bg-gray-50 border border-gray-100 rounded-[2rem] p-10 md:p-16 text-center max-w-4xl mx-auto shadow-sm">
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-4 tracking-tight">
+            <p className="text-2xl md:text-3xl font-black text-gray-900 mb-4 tracking-tight">
               베란다 탄성코트와 프리미엄 줄눈시공이 필요하신가요?
-            </h2>
+            </p>
             <p className="text-gray-500 mb-8 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
               친환경 최고급 조습 코팅재와 세련된 타일 펄 매칭으로 소중한 내 집 가치를 높이세요. <br className="hidden md:block" />
               시공 예정 현장의 타일이나 베란다 벽면 사진을 보내주시면 가장 정확한 예상 견적을 즉시 발송해 드립니다.

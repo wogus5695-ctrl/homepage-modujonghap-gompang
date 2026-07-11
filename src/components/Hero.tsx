@@ -49,36 +49,19 @@ const Hero = ({ dynamic }: { dynamic?: DynamicContent | null }) => {
             {dynamic ? (
               <>
                 <span className="text-primary-blue lg:text-gray-900 block text-2xl lg:text-5xl lg:text-7xl lg:mb-2">{dynamic.h1}</span>
-                
-                {/* Desktop-specific suffix */}
-                {dynamic.templateType === "finish" ? (
-                  <span className="hidden lg:inline text-primary-blue">친환경 프리미엄 마감<span className="text-gray-900">으로 완벽하게</span></span>
-                ) : (
-                  <span className="hidden lg:inline text-primary-blue">원인 분석<span className="text-gray-900">부터 맞춤 시공까지 확실하게</span></span>
-                )}
-                
-                {/* Mobile-specific sub-phrase */}
-                <span className="block lg:hidden text-gray-900 text-xl font-bold mt-1">
-                  {dynamic.service.includes("곰팡이제거") && "원인 진단부터 재발 방지까지"}
-                  {dynamic.service.includes("단열시공") && "결로 원인부터 먼저 확인합니다"}
-                  {dynamic.service.includes("탄성코트") && "습기와 오염을 줄이는 맞춤 시공"}
-                  {dynamic.service.includes("줄눈시공") && "욕실과 베란다 타일을 쾌적하게"}
-                  {(dynamic.service.includes("결로방지") || dynamic.service.includes("페인트")) && "결로와 습기 원인을 함께 점검합니다"}
-                  {!dynamic.service.includes("곰팡이제거") && !dynamic.service.includes("단열시공") && !dynamic.service.includes("탄성코트") && !dynamic.service.includes("줄눈시공") && !dynamic.service.includes("결로방지") && !dynamic.service.includes("페인트") && "현장 상태에 맞춰 해결합니다"}
+                <span className="block lg:inline text-primary-blue text-xl lg:text-5xl lg:text-7xl lg:font-black font-bold mt-1 lg:mt-0">
+                  {dynamic.templateType === "finish" 
+                    ? " 친환경 프리미엄 마감으로 완벽하게" 
+                    : " 원인 분석부터 맞춤 시공까지 확실하게"}
                 </span>
               </>
             ) : (
               <>
-                {/* Non-dynamic (Default main) */}
-                <span className="block lg:hidden">
-                  곰팡이, 지우면 끝?!<br />
-                  <span className="text-primary-blue">원인</span>을 해결해야 진짜 끝입니다.
-                </span>
-                <span className="hidden lg:block">
-                  곰팡이, 지우면 끝?!<br />
-                  <span className="text-primary-blue">원인</span>을 해결해야<br />
-                  진짜 <span className="text-primary-blue">[끝]</span> 입니다.
-                </span>
+                {/* Non-dynamic (Default main) - Unified via CSS pseudo-elements to avoid SEO duplicates */}
+                곰팡이, 지우면 끝?!<br />
+                <span className="text-primary-blue">원인</span>을 해결해야
+                <br className="hidden lg:inline" />
+                {" "}진짜 <span className="text-primary-blue before:content-[''] lg:before:content-['['] after:content-[''] lg:after:content-[']']">끝</span>입니다.
               </>
             )}
           </h1>

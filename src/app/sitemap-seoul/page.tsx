@@ -91,9 +91,9 @@ export default function SitemapSeoul() {
           
           {/* Bottom CTA Card */}
           <div className="mt-28 bg-gray-50 border border-gray-100 rounded-[2rem] p-10 md:p-16 text-center max-w-4xl mx-auto shadow-sm">
-            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-4 tracking-tight">
+            <p className="text-2xl md:text-3xl font-black text-gray-900 mb-4 tracking-tight">
               습기 결로와 곰팡이 해결이 필요하신가요?
-            </h2>
+            </p>
             <p className="text-gray-500 mb-8 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
               더 늦기 전에 원인을 진단하고 확실한 재발 방지 장벽을 세우세요. <br className="hidden md:block" />
               사진 상담을 요청하시면 현장 사진을 기준으로 빠른 1차 견적을 안내해 드립니다.
