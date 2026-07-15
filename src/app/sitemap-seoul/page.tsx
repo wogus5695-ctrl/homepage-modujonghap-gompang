@@ -99,7 +99,7 @@ export default function SitemapSeoul() {
               사진 상담을 요청하시면 현장 사진을 기준으로 빠른 1차 견적을 안내해 드립니다.
             </p>
             <a
-              href="tel:050-7871-3550"
+              href="tel:050-7871-3592"
               className="inline-flex items-center space-x-3 bg-primary-blue text-white px-8 py-4 rounded-xl text-base font-bold shadow-md hover:bg-blue-700 transition-all hover:scale-105"
             >
               <span>곰팡이 원인 무료 전화 상담</span>

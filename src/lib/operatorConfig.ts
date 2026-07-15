@@ -9,7 +9,7 @@ export interface OperatorInfo {
 
 export const DEFAULT_OPERATOR: OperatorInfo = {
   operatorName: "모두종합환경",
-  contactPhone: "010-8309-9249",
+  contactPhone: "050-7871-3592",
   kakaoLink: "https://pf.kakao.com/_xxxx", // 카카오 채널 기본주소
   operatingHours: "평일/주말 09:00 ~ 20:00 (연중무휴)",
   representative: "김재현",

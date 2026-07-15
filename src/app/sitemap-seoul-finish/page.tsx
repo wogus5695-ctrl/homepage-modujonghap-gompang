@@ -98,7 +98,7 @@ export default function SitemapSeoulFinish() {
               시공 예정 현장의 타일이나 베란다 벽면 사진을 보내주시면 가장 정확한 예상 견적을 즉시 발송해 드립니다.
             </p>
             <a
-              href="tel:050-7871-3550"
+              href="tel:050-7871-3592"
               className="inline-flex items-center space-x-3 bg-primary-blue text-white px-8 py-4 rounded-xl text-base font-bold shadow-md hover:bg-blue-700 transition-all hover:scale-105"
             >
               <span>친환경 마감 사진 견적 문의</span>
