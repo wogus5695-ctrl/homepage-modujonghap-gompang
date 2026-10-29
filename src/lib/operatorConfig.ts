@@ -12,8 +12,8 @@ export const DEFAULT_OPERATOR: OperatorInfo = {
   contactPhone: "050-7871-3592",
   kakaoLink: "https://pf.kakao.com/_xxxx", // 카카오 채널 기본주소
   operatingHours: "평일/주말 09:00 ~ 20:00 (연중무휴)",
-  representative: "김재현",
-  businessNumber: "405-15-02677",
+  representative: "고봉기",
+  businessNumber: "871-16-01718",
 };
 
 // B그룹 (탄성코트, 줄눈시공)의 기본 고객센터/연락처 설정
